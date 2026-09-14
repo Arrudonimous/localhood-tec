@@ -78,6 +78,52 @@ export const translations = {
       popupCta: "Quero Receber",
       popupDismiss: "Agora não",
     },
+    pricing: {
+      headline: "Planos para Cada Fase do Seu Negócio",
+      subheadline: "Escolha o plano ideal para o momento da sua empresa",
+      popular: "Popular",
+      ctaCustom: "Falar com Especialista",
+      plans: {
+        startup: {
+          name: "Startup",
+          bestFor: "Pequenas empresas e freelancers",
+          features: [
+            "Website até 5 páginas",
+            "Design responsivo",
+            "Formulário de contato",
+            "SEO básico",
+            "Suporte por email",
+          ],
+          cta: "Começar Agora",
+        },
+        professional: {
+          name: "Professional",
+          bestFor: "Empresas em crescimento",
+          features: [
+            "Website até 20 páginas",
+            "E-commerce integrado",
+            "Automações básicas",
+            "SEO avançado",
+            "Analytics e relatórios",
+            "Suporte prioritário 48h",
+            "3 meses de manutenção",
+          ],
+          cta: "Contratar Plano",
+        },
+        enterprise: {
+          name: "Enterprise",
+          bestFor: "Grandes empresas e escalas internacionais",
+          features: [
+            "Solução customizada 100%",
+            "Infraestrutura dedicada",
+            "APIs personalizadas",
+            "Painel administrativo avançado",
+            "Equipe dedicada",
+            "Suporte 24/7",
+          ],
+        },
+      },
+    },
   },
   "en-US": {
     nav: {
@@ -155,6 +201,52 @@ export const translations = {
         "50 essential points to make your website convert more. Leave your email and we'll send it now.",
       popupCta: "Send It to Me",
       popupDismiss: "Not now",
+    },
+    pricing: {
+      headline: "Plans For Every Stage of Your Business",
+      subheadline: "Choose the right plan for where your company is today",
+      popular: "Popular",
+      ctaCustom: "Talk to a Specialist",
+      plans: {
+        startup: {
+          name: "Startup",
+          bestFor: "Small businesses and freelancers",
+          features: [
+            "Website up to 5 pages",
+            "Responsive design",
+            "Contact form",
+            "Basic SEO",
+            "Email support",
+          ],
+          cta: "Get Started",
+        },
+        professional: {
+          name: "Professional",
+          bestFor: "Growing businesses",
+          features: [
+            "Website up to 20 pages",
+            "Integrated e-commerce",
+            "Basic automations",
+            "Advanced SEO",
+            "Analytics and reports",
+            "Priority support 48h",
+            "3 months of maintenance",
+          ],
+          cta: "Choose Plan",
+        },
+        enterprise: {
+          name: "Enterprise",
+          bestFor: "Large companies and international scale",
+          features: [
+            "100% custom solution",
+            "Dedicated infrastructure",
+            "Custom APIs",
+            "Advanced admin panel",
+            "Dedicated team",
+            "24/7 support",
+          ],
+        },
+      },
     },
   },
 } as const;
