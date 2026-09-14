@@ -289,7 +289,37 @@ Regra dos próprios documentos: nunca rodar dois prompts em paralelo; sempre tes
 | 15 | Blog + SEO (`/blog`) | `projeto agencia tech.pdf` → Prompt 13 | Listagem, post individual, meta tags e sitemap |
 | 16 | Admin Panel (`/admin`) | `projeto agencia tech.pdf` → Prompt 14 | CRUD de projetos/blog/testimonials/leads funciona |
 | 17 | SEO, performance e monitoring | `projeto agencia tech.pdf` → Prompt 15 | Lighthouse 90+, Sentry captura erro de teste |
-| 18 | Deploy (Vercel + Cloudflare + SSL + domínio) | `GUIA RAPIDO.pdf` → seção "Deploy" | Site acessível via domínio final com HTTPS |
+| 18 | Deploy (Vercel + Cloudflare + SSL + domínio) | `GUIA RAPIDO.pdf` → seção "Deploy" | Site acessível via domínio final com HTTPS — **requer ação sua, ver abaixo** |
+
+### Etapa 18 — o que precisa de você
+
+Diferente das etapas anteriores, o deploy não pode ser feito pelo Claude Code sozinho: exige
+conectar sua conta pessoal da Vercel, comprar/configurar um domínio real e mexer no DNS via
+Cloudflare — tudo coisa que só você (dono da conta) pode autorizar. O que já foi preparado no
+código:
+
+- [x] `npm run build` passa limpo (validado a cada prompt)
+- [x] Workflow de CI (`.github/workflows/ci.yml`) rodando `lint` + `build` a cada push/PR no
+      GitHub, para pegar erro antes de qualquer deploy
+- [x] `.env.example` documenta todas as variáveis de ambiente necessárias em produção
+
+O que falta e depende de você:
+
+1. Criar conta na [Vercel](https://vercel.com) (se ainda não tiver) e importar o repositório
+   `Arrudonimous/sterk` do GitHub.
+2. Configurar em Project Settings → Environment Variables da Vercel todas as chaves do
+   `.env.example` com valores reais (especialmente `JWT_SECRET` com um valor forte e único —
+   nunca reaproveitar o do `.env.local` de dev).
+3. Registrar o domínio final (ex: sterk.com.br) em um registrador (Registro.br, Namecheap, etc).
+4. Adicionar o domínio em Project Settings → Domains na Vercel e apontar o DNS para a Vercel
+   (ou usar Cloudflare na frente como CDN, seguindo as instruções que a própria Vercel mostra
+   ao adicionar o domínio).
+5. A Vercel emite o certificado SSL automaticamente assim que o DNS propagar — não precisa
+   configurar nada manualmente.
+6. Trocar `url` em `src/config/site-config.ts` para o domínio final antes do primeiro deploy
+   (hoje está com o placeholder `https://sterk.com.br`).
+
+Depois desses passos, cada push na branch `master` faz deploy automático na Vercel.
 
 ### Prompt novo (FAQ)
 
