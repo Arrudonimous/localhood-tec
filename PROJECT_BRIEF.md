@@ -101,12 +101,14 @@ sterk/
 5. Portfolio — grid com filtros (categoria/tecnologia/status), 6-8 projetos.
 6. Testimonials — carousel de 6+ depoimentos com rating e resultado quantificável.
 7. Planos — Startup ($2.990), Professional ($7.990, destaque popular), Enterprise (sob consulta).
-8. Processo criativo (diferencial) — Descoberta, Estratégia, Design, Desenvolvimento, Otimização,
+8. FAQ — accordion de perguntas frequentes (prazo, pagamento, atendimento internacional, ajustes
+   pós-entrega, suporte, diferença entre planos). Ver spec completa em "Prompt novo (FAQ)" abaixo.
+9. Processo criativo (diferencial) — Descoberta, Estratégia, Design, Desenvolvimento, Otimização,
    Crescimento.
-9. Por que nos escolher — 5-7 pontos com ícones.
-10. Blog/Insights — 3 últimos posts, CMS-ready.
-11. CTA final — "Solicitar Proposta Personalizada" / "Agendar Chamada de 20 Min".
-12. Footer — 5 colunas (marca+social, serviços, empresa, legal, contato) + copyright.
+10. Por que nos escolher — 5-7 pontos com ícones.
+11. Blog/Insights — 3 últimos posts, CMS-ready.
+12. CTA final — "Solicitar Proposta Personalizada" / "Agendar Chamada de 20 Min".
+13. Footer — 5 colunas (marca+social, serviços, empresa, legal, contato) + copyright.
 
 ## Painel de cliente (dashboard)
 
@@ -276,10 +278,47 @@ Regra dos próprios documentos: nunca rodar dois prompts em paralelo; sempre tes
 | 11 | Portfolio (`/portfolio`) | `projeto agencia tech.pdf` → Prompt 6 | Grid com filtros por categoria/tecnologia funciona |
 | 12 | Testimonials (carousel) | `projeto agencia tech.pdf` → Prompt 7 | Carousel avança automaticamente e com setas |
 | 13 | Planos (`/pricing`) | `projeto agencia tech.pdf` → Prompt 8 | 3 planos exibidos, preço converte USD/BRL |
-| 14 | Blog + SEO (`/blog`) | `projeto agencia tech.pdf` → Prompt 13 | Listagem, post individual, meta tags e sitemap |
-| 15 | Admin Panel (`/admin`) | `projeto agencia tech.pdf` → Prompt 14 | CRUD de projetos/blog/testimonials/leads funciona |
-| 16 | SEO, performance e monitoring | `projeto agencia tech.pdf` → Prompt 15 | Lighthouse 90+, Sentry captura erro de teste |
-| 17 | Deploy (Vercel + Cloudflare + SSL + domínio) | `GUIA RAPIDO.pdf` → seção "Deploy" | Site acessível via domínio final com HTTPS |
+| 14 | FAQ (accordion de perguntas frequentes) | Novo — ver "Prompt novo (FAQ)" abaixo | Clicar numa pergunta expande a resposta; só uma aberta por vez |
+| 15 | Blog + SEO (`/blog`) | `projeto agencia tech.pdf` → Prompt 13 | Listagem, post individual, meta tags e sitemap |
+| 16 | Admin Panel (`/admin`) | `projeto agencia tech.pdf` → Prompt 14 | CRUD de projetos/blog/testimonials/leads funciona |
+| 17 | SEO, performance e monitoring | `projeto agencia tech.pdf` → Prompt 15 | Lighthouse 90+, Sentry captura erro de teste |
+| 18 | Deploy (Vercel + Cloudflare + SSL + domínio) | `GUIA RAPIDO.pdf` → seção "Deploy" | Site acessível via domínio final com HTTPS |
+
+### Prompt novo (FAQ)
+
+Não existia nos 3 PDFs originais — adicionado ao roteiro por pedido do cliente. Spec pronta para
+colar no Claude Code quando chegar a etapa 14:
+
+> Crie uma seção de FAQ (Perguntas Frequentes) em formato accordion.
+>
+> Localização: `src/app/page.tsx` (adicionar após a seção de Planos). Componente:
+> `src/components/FAQ.tsx`.
+>
+> Perguntas e respostas sugeridas (8-10 pares, pode ajustar o texto):
+> 1. Quanto tempo leva para meu projeto ficar pronto?
+> 2. Como funciona o pagamento (à vista, parcelado, por fase)?
+> 3. Vocês atendem empresas fora do Brasil?
+> 4. Preciso ter tudo pronto (conteúdo, logo, textos) antes de começar?
+> 5. O que acontece se eu precisar de ajustes depois da entrega?
+> 6. Vocês oferecem suporte e manutenção contínua?
+> 7. Qual a diferença entre os planos Startup, Professional e Enterprise?
+> 8. Como acompanho o andamento do meu projeto?
+> 9. Posso migrar de um site que já existe?
+> 10. Como funciona garantia ou reembolso?
+>
+> Design:
+> - Headline "Perguntas Frequentes" (36px) + subheadline "Tire suas dúvidas antes de começar"
+>   (16px, `#9ca3af`).
+> - Cada item: pergunta em `#f5f5f5` (bold) com ícone +/− ou chevron que rotaciona ao abrir;
+>   resposta em `#9ca3af`; borda inferior sutil (`#1a1f3a`) separando os itens.
+> - Apenas uma pergunta expandida por vez, com animação de altura suave (Framer Motion).
+> - Hover na pergunta muda a cor para `#d4af37` (ouro).
+> - Background da seção `#0a0e27`, padding 80px vertical / 40px horizontal, max-width ~800px
+>   centralizado.
+> - Responsivo: mesma estrutura em accordion no mobile, sem necessidade de layout diferente.
+>
+> Teste: clicar em cada pergunta expande e recolhe corretamente; abrir uma fecha a anterior;
+> funciona igual em mobile e desktop; sem erros de console.
 
 ## Fluxo de trabalho com Claude Code
 
