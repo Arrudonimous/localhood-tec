@@ -10,6 +10,7 @@ export default function LeadMagnetPopup() {
   const { t, locale } = useLocale();
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot anti-spam
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function LeadMagnetPopup() {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "popup", locale }),
+        body: JSON.stringify({ email, website, source: "popup", locale }),
       });
       if (!res.ok) throw new Error("failed");
       setStatus("success");
@@ -88,6 +89,18 @@ export default function LeadMagnetPopup() {
                   {t("contact.popupBody")}
                 </p>
                 <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-3">
+                  {/* Honeypot anti-spam: invisível para pessoas, bots costumam preencher */}
+                  <div className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
+                    <label htmlFor="popup-website">Não preencha este campo</label>
+                    <input
+                      id="popup-website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
                   <input
                     type="email"
                     required

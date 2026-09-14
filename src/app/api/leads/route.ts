@@ -15,6 +15,8 @@ const leadSchema = z
     description: z.string().trim().max(500).optional(),
     source: z.enum(["contact-form", "popup", "other"]).default("contact-form"),
     locale: z.enum(["pt-BR", "en-US"]).default("pt-BR"),
+    // honeypot: campo invisível para humanos; bots costumam preenchê-lo.
+    website: z.string().max(200).optional().default(""),
   })
   .superRefine((data, ctx) => {
     if (data.source === "popup") return;
@@ -47,6 +49,11 @@ export async function POST(request: Request) {
   }
 
   const data = result.data;
+
+  if (data.website) {
+    // Honeypot preenchido: provavelmente um bot. Finge sucesso sem salvar nada.
+    return NextResponse.json({ success: true, leadId: "ok" }, { status: 201 });
+  }
 
   try {
     const lead = await saveLead({

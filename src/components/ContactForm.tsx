@@ -22,6 +22,7 @@ const formSchema = z.object({
   budget: z.enum(["b1", "b2", "b3", "b4", "b5"]),
   description: z.string().trim().min(10).max(500),
   acceptedPrivacy: z.literal(true),
+  website: z.string().max(0).optional(), // honeypot anti-spam
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -192,6 +193,18 @@ export default function ContactForm() {
                   {errors.description.message}
                 </p>
               )}
+            </div>
+
+            {/* Honeypot anti-spam: invisível para pessoas, bots costumam preencher */}
+            <div className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden">
+              <label htmlFor="website">Não preencha este campo</label>
+              <input
+                id="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                {...register("website")}
+              />
             </div>
 
             <div>

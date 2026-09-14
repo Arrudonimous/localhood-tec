@@ -7,14 +7,6 @@ export const siteConfig = {
   phone: "+55 (11) 4000-0000",
   whatsappUrl: "https://wa.me/5511400000000",
   businessHours: "Seg-Sex 9h-18h (Horário de Brasília)",
-  nav: [
-    { label: "Serviços", href: "/services" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Como Funciona", href: "/how-it-works" },
-    { label: "Planos", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contato", href: "#contato" },
-  ],
   socialLinks: [
     { label: "LinkedIn", href: "https://linkedin.com" },
     { label: "Instagram", href: "https://instagram.com" },

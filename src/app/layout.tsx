@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadMagnetPopup from "@/components/LeadMagnetPopup";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { LocaleProvider } from "@/context/LocaleContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { siteConfig } from "@/config/site-config";
@@ -59,6 +60,7 @@ export default function RootLayout({
           </AuthProvider>
         </LocaleProvider>
         <GoogleAnalytics />
+        <CookieConsentBanner />
       </body>
     </html>
   );

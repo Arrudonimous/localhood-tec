@@ -369,23 +369,64 @@ colar no Claude Code quando chegar a etapa 14:
 
 ## Gate final antes de publicar ao público
 
-Antes do lançamento, validar explicitamente (OK / faltando / não aplicável):
+Checklist completo validado em 14/09/2026 (ver histórico de commits `chore/prelaunch-checklist-fixes`
+para o que foi corrigido nesta passada):
 
-- [x] Política de privacidade e termos de uso — `/privacy` e `/terms` criadas com conteúdo
-      genérico; **revisar com um advogado antes de publicar de verdade** (texto não é
-      aconselhamento jurídico)
-- [ ] Nenhum segredo exposto no frontend; HTTPS forçado (depende do deploy); banner de cookies
-      (ainda não implementado — pendente)
-- [x] Meta titles/descriptions, imagem OG básica, favicon (padrão Next.js), sitemap.xml +
-      robots.txt, alt text (revisar quando entrarem imagens reais)
-- [ ] Imagens otimizadas e velocidade de carregamento verificada (sem imagens reais ainda,
-      só placeholders/gradientes)
-- [x] Contraste de cores, responsividade mobile, página 404 customizada (`not-found.tsx`),
-      links do footer/nav corrigidos (todas as rotas referenciadas agora existem)
-- [ ] Validação de formulários (feita) e proteção anti-spam (captcha/honeypot — ainda não
-      implementado, pendente)
-- [x] Analytics configurado (Google Analytics via `GoogleAnalytics.tsx`, ativa com
-      `NEXT_PUBLIC_ENABLE_ANALYTICS=true` + `NEXT_PUBLIC_GA_ID`) e CTA clara na página
+**Legal e conformidade**
+1. [x] Política de privacidade — `/privacy`. **Revisar com um advogado antes de publicar de
+       verdade** (conteúdo genérico, não é aconselhamento jurídico)
+2. [x] Termos e condições — `/terms` (mesma ressalva acima)
+
+**Segurança**
+3. [x] Nenhum segredo exposto no frontend — `JWT_SECRET` só é lido em `lib/session.ts`,
+       importado exclusivamente por rotas de API/middleware (nunca por client components);
+       `.env.local` nunca foi commitado (só `.env.example` com placeholders)
+4. [ ] HTTPS forçado em todas as rotas — depende do deploy; a Vercel força isso
+       automaticamente, nada a fazer no código
+5. [x] Banner de consentimento de cookies — `CookieConsentBanner.tsx`; Google Analytics só
+       carrega depois do usuário aceitar (gate por `localStorage`)
+
+**SEO e metadados**
+6. [x] Meta titles + descriptions em todas as páginas (incluindo `/login`, `/register`,
+       `/forgot-password`, `/reset-password` via layouts dedicados, já que são client components)
+7. [x] Imagem de preview para redes sociais — `opengraph-image.tsx` (gerada dinamicamente,
+       sem depender de asset externo)
+8. [x] Favicon — `icon.tsx` (monograma "S" dourado gerado dinamicamente, branded)
+9. [x] Sitemap.xml e robots.txt — `sitemap.ts` / `robots.ts`
+10. [ ] Texto alternativo em imagens — **não aplicável ainda**: o site não usa `<img>`/`<Image>`
+        reais, só gradientes/emoji/SVG como placeholder. Revisar assim que entrarem fotos reais.
+
+**Performance**
+11. [ ] Compressão de imagens — não aplicável pelo mesmo motivo do item 10
+12. [ ] Velocidade de carregamento (Lighthouse) — não testado formalmente neste ambiente;
+        bundle da home fica em ~175kB First Load JS, razoável, mas recomendo rodar
+        PageSpeed Insights depois do deploy (build de produção real, não o dev server)
+
+**Acessibilidade e UX**
+13. [x] Contraste de cores — validado por cálculo de razão WCAG nas combinações principais
+        (texto branco/dourado/verde sobre os fundos escuros), todas passam AA e a maioria AAA
+14. [x] Responsivo mobile-first — testado em cada prompt do roteiro
+15. [x] Página 404 customizada — `not-found.tsx`
+16. [x] Sem links quebrados — corrigido nesta passada (menu/footer apontavam para
+        `/services`, `/how-it-works`, `/about`, `/careers`, `/press`, `/cookies`, `/gdpr`,
+        `/accessibility` sem essas rotas existirem; removido também um array `nav` morto em
+        `site-config.ts` que carregava os mesmos hrefs quebrados sem ser usado em lugar nenhum)
+
+**Formulários e robustez**
+17. [x] Validação de formulários — React Hook Form + Zod (contato, registro) e validação
+        nativa + Zod no servidor (login, forgot/reset password)
+18. [x] Proteção contra spam — honeypot (campo `website` invisível) no formulário de contato,
+        no pop-up de lead magnet e validado em `/api/leads`; testado enviando um payload de
+        "bot" (recebe falso sucesso, nada é salvo) e um payload normal (salva normalmente)
+
+**Métricas e conversão**
+19. [x] Analytics configurado — Google Analytics (`GoogleAnalytics.tsx`), condicionado a
+        `NEXT_PUBLIC_ENABLE_ANALYTICS=true` + `NEXT_PUBLIC_GA_ID` **e** ao consentimento de
+        cookies do item 5
+20. [x] CTA clara na página — "Solicitar Proposta" no Hero, repetida em Services/Pricing/Portfolio
+
+**Pendências reais para revisar antes de ir ao ar:** itens 4 (automático no deploy), 10-12
+(dependem de fotos reais e de um teste de Lighthouse pós-deploy).
 
 ## Troubleshooting comum
 
