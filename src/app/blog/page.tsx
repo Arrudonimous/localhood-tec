@@ -19,6 +19,12 @@ export default async function BlogPage() {
           Conteúdo sobre e-commerce, design, automação e negócios digitais.
         </p>
 
+        {blogPosts.length === 0 && (
+          <p className="mt-10 text-text-secondary">
+            Nenhum artigo publicado ainda.
+          </p>
+        )}
+
         <div className="mt-10 space-y-6">
           {blogPosts.map((post) => (
             <Link

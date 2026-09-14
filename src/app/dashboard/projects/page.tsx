@@ -8,27 +8,35 @@ export default function ProjectsPage() {
         Meus Projetos
       </h1>
 
-      <div className="mt-8 space-y-4">
-        {mockProjects.map((project) => (
-          <Link
-            key={project.id}
-            href={`/dashboard/project/${project.id}`}
-            className="block rounded-lg border border-secondary bg-secondary p-6 transition-colors duration-fast hover:border-gold"
-          >
-            <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-              <div>
-                <p className="text-lg font-bold text-text">{project.name}</p>
-                <p className="text-sm text-text-secondary">
-                  {project.category} · Gerente: {project.projectManager}
+      {mockProjects.length > 0 ? (
+        <div className="mt-8 space-y-4">
+          {mockProjects.map((project) => (
+            <Link
+              key={project.id}
+              href={`/dashboard/project/${project.id}`}
+              className="block rounded-lg border border-secondary bg-secondary p-6 transition-colors duration-fast hover:border-gold"
+            >
+              <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+                <div>
+                  <p className="text-lg font-bold text-text">{project.name}</p>
+                  <p className="text-sm text-text-secondary">
+                    {project.category} · Gerente: {project.projectManager}
+                  </p>
+                </div>
+                <p className="text-sm font-semibold text-gold">
+                  {project.progress}% concluído
                 </p>
               </div>
-              <p className="text-sm font-semibold text-gold">
-                {project.progress}% concluído
-              </p>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-8 rounded-lg border border-secondary bg-secondary p-6 text-center">
+          <p className="text-text-secondary">
+            Você ainda não tem nenhum projeto cadastrado.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

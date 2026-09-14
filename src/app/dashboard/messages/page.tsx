@@ -10,24 +10,9 @@ interface Message {
   text: string;
 }
 
-const initialMessages: Message[] = [
-  {
-    id: "m1",
-    sender: "staff",
-    senderName: "Ana Ribeiro",
-    text: "Olá! O mockup da página de contato está pronto para sua aprovação.",
-  },
-  {
-    id: "m2",
-    sender: "client",
-    senderName: "Você",
-    text: "Legal, vou revisar hoje ainda.",
-  },
-];
-
 export default function MessagesPage() {
   const { user } = useAuth();
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [draft, setDraft] = useState("");
 
   const send = (e: React.FormEvent) => {
@@ -51,6 +36,11 @@ export default function MessagesPage() {
 
       <div className="mt-6 flex h-[420px] flex-col rounded-lg border border-secondary bg-secondary">
         <div className="flex-1 space-y-3 overflow-y-auto p-4">
+          {messages.length === 0 && (
+            <p className="text-center text-sm text-text-secondary">
+              Nenhuma mensagem ainda. Envie a primeira!
+            </p>
+          )}
           {messages.map((message) => (
             <div
               key={message.id}

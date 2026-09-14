@@ -45,7 +45,7 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, [next]);
 
-  const current = testimonials[index] ?? testimonials[0];
+  const current = testimonials[index];
 
   return (
     <section className="bg-secondary px-6 py-20 sm:px-10">
@@ -54,70 +54,78 @@ export default function Testimonials() {
           O que nossos clientes dizem
         </h2>
 
-        <div className="relative mt-10 min-h-[260px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <TiltCard className="glass rounded-lg p-8">
-                <span className="text-4xl text-gold">&ldquo;</span>
-                <p className="mt-2 text-text">{current.message}</p>
+        {!current ? (
+          <p className="mt-10 text-text-secondary">
+            Em breve, depoimentos dos nossos clientes.
+          </p>
+        ) : (
+          <>
+            <div className="relative mt-10 min-h-[260px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <TiltCard className="glass rounded-lg p-8">
+                    <span className="text-4xl text-gold">&ldquo;</span>
+                    <p className="mt-2 text-text">{current.message}</p>
 
-                <div className="mt-6 flex items-center justify-center gap-1 text-gold">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i}>{i < current.rating ? "★" : "☆"}</span>
-                  ))}
-                </div>
+                    <div className="mt-6 flex items-center justify-center gap-1 text-gold">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <span key={i}>{i < current.rating ? "★" : "☆"}</span>
+                      ))}
+                    </div>
 
-                <p className="mt-4 font-bold text-text">{current.name}</p>
-                <p className="text-sm text-text-secondary">
-                  {current.role} · {current.company}
-                </p>
-                <p className="mt-2 text-sm font-semibold text-green">
-                  {current.result}
-                </p>
-              </TiltCard>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+                    <p className="mt-4 font-bold text-text">{current.name}</p>
+                    <p className="text-sm text-text-secondary">
+                      {current.role} · {current.company}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold text-green">
+                      {current.result}
+                    </p>
+                  </TiltCard>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-        <div className="mt-6 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={prev}
-            aria-label="Depoimento anterior"
-            className="text-xl text-text-secondary transition-colors duration-fast hover:text-gold"
-          >
-            ←
-          </button>
-
-          <div className="flex gap-2">
-            {testimonials.map((testimonial, i) => (
+            <div className="mt-6 flex items-center justify-center gap-4">
               <button
-                key={testimonial.id}
                 type="button"
-                aria-label={`Ir para depoimento ${i + 1}`}
-                onClick={() => setIndex(i)}
-                className={`h-2 w-2 rounded-full transition-colors duration-fast ${
-                  i === index ? "bg-gold" : "bg-text-secondary/40"
-                }`}
-              />
-            ))}
-          </div>
+                onClick={prev}
+                aria-label="Depoimento anterior"
+                className="text-xl text-text-secondary transition-colors duration-fast hover:text-gold"
+              >
+                ←
+              </button>
 
-          <button
-            type="button"
-            onClick={next}
-            aria-label="Próximo depoimento"
-            className="text-xl text-text-secondary transition-colors duration-fast hover:text-gold"
-          >
-            →
-          </button>
-        </div>
+              <div className="flex gap-2">
+                {testimonials.map((testimonial, i) => (
+                  <button
+                    key={testimonial.id}
+                    type="button"
+                    aria-label={`Ir para depoimento ${i + 1}`}
+                    onClick={() => setIndex(i)}
+                    className={`h-2 w-2 rounded-full transition-colors duration-fast ${
+                      i === index ? "bg-gold" : "bg-text-secondary/40"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={next}
+                aria-label="Próximo depoimento"
+                className="text-xl text-text-secondary transition-colors duration-fast hover:text-gold"
+              >
+                →
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

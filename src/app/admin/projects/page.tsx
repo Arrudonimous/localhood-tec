@@ -25,12 +25,16 @@ export default function AdminProjectsPage() {
     <div>
       <h1 className="text-2xl font-bold text-text sm:text-3xl">Projetos</h1>
       <p className="mt-2 text-sm text-text-secondary">
-        Visão geral dos projetos de clientes (dados mockados até o Postgres
-        entrar no roteiro — ver PROJECT_BRIEF).
+        Visão geral dos projetos de clientes (ainda sem banco de dados
+        integrado — ver PROJECT_BRIEF).
       </p>
 
       {loading ? (
         <p className="mt-6 text-text-secondary">Carregando...</p>
+      ) : projects.length === 0 ? (
+        <p className="mt-6 text-text-secondary">
+          Nenhum projeto cadastrado ainda.
+        </p>
       ) : (
         <div className="mt-6 space-y-3">
           {projects.map((project) => (

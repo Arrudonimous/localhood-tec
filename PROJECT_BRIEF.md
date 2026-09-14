@@ -108,11 +108,15 @@ sterk/
    de "Projeto Personalizado" com CTA "Consulte Nosso Time" para quem não se encaixa nas opções
    acima (ajuste pedido pela Francielle: antes estava rotulado como "Fase 1/2/3", o que passava a
    impressão errada de que as três categorias eram etapas de um mesmo pacote).
-5. Portfolio — grid com filtros (categoria/tecnologia/status), 8 projetos, em `/portfolio`.
-   Na home, teaser com 6 projetos em destaque (`FeaturedPortfolio.tsx`) em grid vertical normal
-   com link para o portfolio completo (testamos antes um teaser com efeito de scroll horizontal,
-   mas foi removido a pedido do usuário por não ter ficado bom visualmente).
-6. Testimonials — carousel de 6+ depoimentos com rating e resultado quantificável.
+5. Portfolio — grid com filtros (categoria/tecnologia/status) em `/portfolio`. Removidos os 7
+   case studies fictícios usados como placeholder inicial (2026-09-14, a pedido do usuário); hoje
+   só tem o projeto real (Pesqueiro Arruda's). Na home, teaser com até 6 projetos em destaque
+   (`FeaturedPortfolio.tsx`) em grid vertical normal com link para o portfolio completo (testamos
+   antes um teaser com efeito de scroll horizontal, mas foi removido por não ter ficado bom
+   visualmente).
+6. Testimonials — carousel de depoimentos com rating e resultado quantificável. Os 6 depoimentos
+   fictícios usados como placeholder foram removidos (2026-09-14); a seção mostra "Em breve,
+   depoimentos dos nossos clientes" até que depoimentos reais sejam cadastrados via `/admin`.
 7. Planos — Startup ($2.990), Professional ($7.990, destaque popular), Enterprise (sob consulta).
 8. FAQ — accordion de perguntas frequentes (prazo, pagamento, atendimento internacional, ajustes
    pós-entrega, suporte, diferença entre planos). Ver spec completa em "Prompt novo (FAQ)" abaixo.
