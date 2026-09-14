@@ -63,10 +63,14 @@ export async function POST(request: Request) {
     userId: user.id,
     email: user.email,
     name: user.name,
+    role: user.role,
   });
 
   const response = NextResponse.json(
-    { success: true, user: { id: user.id, name: user.name, email: user.email } },
+    {
+      success: true,
+      user: { id: user.id, name: user.name, email: user.email, role: user.role },
+    },
     { status: 201 },
   );
   response.cookies.set(AUTH_COOKIE, token, {

@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/mock-blog";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-store";
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
-}
-
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Metadata {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+}): Promise<Metadata> {
+  const post = await getBlogPostBySlug(params.slug);
   if (!post) return { title: "Post não encontrado — Sterk" };
 
   return {
@@ -27,15 +23,16 @@ export function generateMetadata({
   };
 }
 
-export default function BlogPostPage({
+export default async function BlogPostPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+  const post = await getBlogPostBySlug(params.slug);
   if (!post) notFound();
 
-  const related = blogPosts
+  const allPosts = await getBlogPosts();
+  const related = allPosts
     .filter((p) => p.slug !== post.slug && p.category === post.category)
     .slice(0, 2);
 

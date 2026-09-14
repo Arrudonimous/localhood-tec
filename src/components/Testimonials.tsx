@@ -2,14 +2,38 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { testimonials } from "@/lib/mock-testimonials";
+import { testimonials as fallbackTestimonials } from "@/lib/mock-testimonials";
+
+interface ApiTestimonial {
+  id: string;
+  name: string;
+  company: string;
+  role: string;
+  message: string;
+  rating: number;
+  result: string;
+}
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<ApiTestimonial[]>(
+    fallbackTestimonials,
+  );
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    fetch("/api/testimonials")
+      .then((res) => res.json())
+      .then((data: { testimonials?: ApiTestimonial[] }) => {
+        if (data.testimonials?.length) setTestimonials(data.testimonials);
+      })
+      .catch(() => {
+        // mantém os depoimentos padrão em caso de falha
+      });
+  }, []);
 
   const next = useCallback(() => {
     setIndex((i) => (i + 1) % testimonials.length);
-  }, []);
+  }, [testimonials.length]);
 
   const prev = () => {
     setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
@@ -20,7 +44,7 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, [next]);
 
-  const current = testimonials[index];
+  const current = testimonials[index] ?? testimonials[0];
 
   return (
     <section className="bg-secondary px-6 py-20 sm:px-10">

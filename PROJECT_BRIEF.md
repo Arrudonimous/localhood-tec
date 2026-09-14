@@ -27,6 +27,13 @@ atualizado de "Agência Tech" para **Sterk**.
 - [ ] Banco de dados escolhido (Postgres local vs Supabase free tier)
 - [ ] Hosting definido (Vercel recomendado)
 
+## Nota: primeiro usuário admin
+
+Ainda não existe UI de convite/promoção de admin (fora de escopo até o Postgres/Prisma
+entrarem no roteiro). Para acessar `/admin` em dev: registre uma conta normal em `/register`,
+edite `data/users.json` trocando `"role": "client"` para `"role": "admin"` nesse usuário, e
+faça login novamente (o JWT antigo não é revalidado automaticamente).
+
 Nenhuma pendência acima bloqueia o Prompt 1 (setup técnico). Elas bloqueiam etapas específicas:
 sem domínio não há deploy final; sem case studies o Portfolio fica só com dados mock; sem contas
 de API o câmbio/geo ficam com fallback fixo.

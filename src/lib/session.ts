@@ -15,6 +15,7 @@ export interface SessionPayload {
   userId: string;
   email: string;
   name: string;
+  role: "client" | "admin";
 }
 
 export async function signSessionToken(payload: SessionPayload): Promise<string> {

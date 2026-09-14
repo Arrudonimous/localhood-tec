@@ -13,6 +13,7 @@ export interface Lead {
   description: string;
   source: "contact-form" | "popup" | "other";
   locale: "pt-BR" | "en-US";
+  status: "new" | "contacted" | "qualified" | "converted" | "lost";
   createdAt: string;
 }
 
@@ -28,19 +29,46 @@ async function readLeads(): Promise<Lead[]> {
   }
 }
 
+async function writeLeads(leads: Lead[]): Promise<void> {
+  await mkdir(DATA_DIR, { recursive: true });
+  await writeFile(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
+}
+
+export async function getLeads(): Promise<Lead[]> {
+  return readLeads();
+}
+
 export async function saveLead(
-  lead: Omit<Lead, "id" | "createdAt">,
+  lead: Omit<Lead, "id" | "createdAt" | "status">,
 ): Promise<Lead> {
   const leads = await readLeads();
   const newLead: Lead = {
     ...lead,
     id: randomUUID(),
+    status: "new",
     createdAt: new Date().toISOString(),
   };
   leads.push(newLead);
-
-  await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
-
+  await writeLeads(leads);
   return newLead;
+}
+
+export async function updateLeadStatus(
+  id: string,
+  status: Lead["status"],
+): Promise<Lead | null> {
+  const leads = await readLeads();
+  const index = leads.findIndex((l) => l.id === id);
+  if (index === -1) return null;
+  leads[index].status = status;
+  await writeLeads(leads);
+  return leads[index];
+}
+
+export async function deleteLead(id: string): Promise<boolean> {
+  const leads = await readLeads();
+  const filtered = leads.filter((l) => l.id !== id);
+  if (filtered.length === leads.length) return false;
+  await writeLeads(filtered);
+  return true;
 }

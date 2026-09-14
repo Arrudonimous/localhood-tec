@@ -4,8 +4,9 @@ import { AUTH_COOKIE, verifySessionToken } from "@/lib/session";
 const PROTECTED_PREFIXES = ["/dashboard", "/admin"];
 
 export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
   const isProtected = PROTECTED_PREFIXES.some((prefix) =>
-    request.nextUrl.pathname.startsWith(prefix),
+    pathname.startsWith(prefix),
   );
 
   if (!isProtected) return NextResponse.next();
@@ -15,8 +16,12 @@ export async function middleware(request: NextRequest) {
 
   if (!session) {
     const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("redirectTo", request.nextUrl.pathname);
+    loginUrl.searchParams.set("redirectTo", pathname);
     return NextResponse.redirect(loginUrl);
+  }
+
+  if (pathname.startsWith("/admin") && session.role !== "admin") {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   return NextResponse.next();

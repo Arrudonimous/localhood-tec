@@ -11,6 +11,7 @@ export interface User {
   phone?: string;
   locale: "pt-BR" | "en-US";
   plan: "startup" | "professional" | "enterprise";
+  role: "client" | "admin";
   createdAt: string;
 }
 
@@ -53,13 +54,14 @@ export async function findUserById(id: string): Promise<User | undefined> {
 }
 
 export async function createUser(
-  data: Omit<User, "id" | "createdAt" | "plan">,
+  data: Omit<User, "id" | "createdAt" | "plan" | "role">,
 ): Promise<User> {
   const users = await getUsers();
   const user: User = {
     ...data,
     id: randomUUID(),
     plan: "startup",
+    role: "client",
     createdAt: new Date().toISOString(),
   };
   users.push(user);

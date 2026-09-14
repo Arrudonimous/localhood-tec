@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { blogPosts } from "@/lib/mock-blog";
+import { getBlogPosts } from "@/lib/blog-store";
 
 export const metadata: Metadata = {
   title: "Blog — Sterk",
@@ -8,7 +8,9 @@ export const metadata: Metadata = {
     "Artigos sobre e-commerce, design, automação e negócios digitais.",
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogPosts = await getBlogPosts();
+
   return (
     <main className="bg-primary px-6 py-16 sm:px-10">
       <div className="mx-auto max-w-4xl">

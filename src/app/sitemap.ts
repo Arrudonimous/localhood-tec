@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/lib/mock-blog";
+import { getBlogPosts } from "@/lib/blog-store";
 import { portfolioProjects } from "@/lib/mock-portfolio";
 import { siteConfig } from "@/config/site-config";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const blogPosts = await getBlogPosts();
   const staticRoutes = [
     "",
     "/portfolio",
