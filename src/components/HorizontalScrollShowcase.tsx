@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { portfolioProjects } from "@/lib/mock-portfolio";
+import TiltCard from "@/components/TiltCard";
 
 const featured = portfolioProjects.slice(0, 6);
 
@@ -49,33 +50,39 @@ export default function HorizontalScrollShowcase() {
           className="mt-10 flex gap-6 px-6 sm:px-10"
         >
           {featured.map((project) => (
-            <Link
+            <TiltCard
               key={project.slug}
-              href={`/portfolio/${project.slug}`}
-              className="flex w-[280px] shrink-0 flex-col rounded-lg border border-secondary bg-secondary p-5 transition-colors duration-fast hover:border-gold sm:w-[320px]"
+              className="w-[280px] shrink-0 sm:w-[320px]"
             >
-              <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
-                {project.category}
-              </div>
-              <p className="mt-4 font-bold text-text">{project.name}</p>
-              <p className="mt-2 text-sm text-text-secondary">
-                {project.description}
-              </p>
-              <span className="mt-4 text-sm font-semibold text-gold">
-                Ver Detalhes →
-              </span>
-            </Link>
+              <Link
+                href={`/portfolio/${project.slug}`}
+                className="glass flex h-full flex-col rounded-lg p-5 transition-colors duration-fast hover:border-gold/60"
+              >
+                <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
+                  {project.category}
+                </div>
+                <p className="mt-4 font-bold text-text">{project.name}</p>
+                <p className="mt-2 text-sm text-text-secondary">
+                  {project.description}
+                </p>
+                <span className="mt-4 text-sm font-semibold text-gold">
+                  Ver Detalhes →
+                </span>
+              </Link>
+            </TiltCard>
           ))}
 
-          <Link
-            href="/portfolio"
-            className="flex w-[280px] shrink-0 flex-col items-center justify-center gap-2 rounded-lg border-2 border-gold p-5 text-center transition-colors duration-fast hover:bg-gold/10 sm:w-[320px]"
-          >
-            <span className="text-lg font-bold text-gold">
-              Ver Portfolio Completo
-            </span>
-            <span className="text-2xl text-gold">→</span>
-          </Link>
+          <TiltCard className="w-[280px] shrink-0 sm:w-[320px]">
+            <Link
+              href="/portfolio"
+              className="flex h-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-gold p-5 text-center transition-colors duration-fast hover:bg-gold/10"
+            >
+              <span className="text-lg font-bold text-gold">
+                Ver Portfolio Completo
+              </span>
+              <span className="text-2xl text-gold">→</span>
+            </Link>
+          </TiltCard>
         </motion.div>
       </div>
     </section>

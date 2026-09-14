@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { testimonials as fallbackTestimonials } from "@/lib/mock-testimonials";
+import TiltCard from "@/components/TiltCard";
 
 interface ApiTestimonial {
   id: string;
@@ -61,24 +62,25 @@ export default function Testimonials() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="rounded-lg border border-secondary bg-primary p-8"
             >
-              <span className="text-4xl text-gold">&ldquo;</span>
-              <p className="mt-2 text-text">{current.message}</p>
+              <TiltCard className="glass rounded-lg p-8">
+                <span className="text-4xl text-gold">&ldquo;</span>
+                <p className="mt-2 text-text">{current.message}</p>
 
-              <div className="mt-6 flex items-center justify-center gap-1 text-gold">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i}>{i < current.rating ? "★" : "☆"}</span>
-                ))}
-              </div>
+                <div className="mt-6 flex items-center justify-center gap-1 text-gold">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span key={i}>{i < current.rating ? "★" : "☆"}</span>
+                  ))}
+                </div>
 
-              <p className="mt-4 font-bold text-text">{current.name}</p>
-              <p className="text-sm text-text-secondary">
-                {current.role} · {current.company}
-              </p>
-              <p className="mt-2 text-sm font-semibold text-green">
-                {current.result}
-              </p>
+                <p className="mt-4 font-bold text-text">{current.name}</p>
+                <p className="text-sm text-text-secondary">
+                  {current.role} · {current.company}
+                </p>
+                <p className="mt-2 text-sm font-semibold text-green">
+                  {current.result}
+                </p>
+              </TiltCard>
             </motion.div>
           </AnimatePresence>
         </div>

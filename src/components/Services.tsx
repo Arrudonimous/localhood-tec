@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
+import TiltCard from "@/components/TiltCard";
 
 const phases = [
   {
@@ -66,30 +67,32 @@ export default function Services() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               whileHover={{ y: -8 }}
-              className="flex flex-1 flex-col rounded-lg border-2 border-gold bg-secondary p-8 transition-shadow duration-base hover:shadow-[0_0_24px_rgba(212,175,55,0.25)]"
+              className="flex flex-1"
             >
-              <span className="text-5xl font-bold text-gold">
-                {phase.number}
-              </span>
-              <h3 className="mt-2 text-xl font-bold text-text">
-                FASE {phase.number} — {phase.name.toUpperCase()}
-              </h3>
-              <ul className="mt-4 flex-1 space-y-2">
-                {phase.items.map((item) => (
-                  <li
-                    key={item}
-                    className="text-sm text-text-secondary"
-                  >
-                    • {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#contato"
-                className="mt-6 text-sm font-semibold text-gold transition-colors duration-fast hover:text-gold/80"
-              >
-                {t("services.learnMore")}
-              </a>
+              <TiltCard className="glass flex flex-1 flex-col rounded-lg border-2 border-gold p-8 transition-shadow duration-base hover:shadow-[0_0_24px_rgba(212,175,55,0.25)]">
+                <span className="text-5xl font-bold text-gold">
+                  {phase.number}
+                </span>
+                <h3 className="mt-2 text-xl font-bold text-text">
+                  FASE {phase.number} — {phase.name.toUpperCase()}
+                </h3>
+                <ul className="mt-4 flex-1 space-y-2">
+                  {phase.items.map((item) => (
+                    <li
+                      key={item}
+                      className="text-sm text-text-secondary"
+                    >
+                      • {item}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#contato"
+                  className="mt-6 text-sm font-semibold text-gold transition-colors duration-fast hover:text-gold/80"
+                >
+                  {t("services.learnMore")}
+                </a>
+              </TiltCard>
             </motion.div>
 
             {index < phases.length - 1 && (

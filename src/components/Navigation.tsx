@@ -42,8 +42,10 @@ export default function Navigation() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-secondary px-8 py-4 transition-colors duration-base ${
-        scrolled ? "bg-primary/95 backdrop-blur" : "bg-primary"
+      className={`sticky top-0 z-50 border-b px-8 py-4 transition-all duration-base ${
+        scrolled
+          ? "border-white/10 bg-primary/50 backdrop-blur-xl"
+          : "border-secondary bg-primary"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
