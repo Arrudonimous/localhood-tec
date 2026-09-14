@@ -85,7 +85,7 @@ export default function ContactForm() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mt-10 rounded-lg border border-gold bg-secondary p-8"
+          className="glass mt-10 rounded-lg border-gold/40 p-8"
         >
           <div className="space-y-5">
             <div>
