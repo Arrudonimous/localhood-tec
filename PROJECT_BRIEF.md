@@ -105,9 +105,10 @@ sterk/
    sistemas, automação, integrações, manutenção), Fase 2 Produtos/SaaS (gestão, CRM, agendamento,
    automação de atendimento, IA), Fase 3 Escala (assinaturas, produtos próprios, marketplace, APIs,
    licenciamento, clientes internacionais).
-5. Portfolio — grid com filtros (categoria/tecnologia/status), 8 projetos, em `/portfolio`
-   (não embutido na home; testamos um teaser com efeito de scroll horizontal na home, mas foi
-   removido a pedido do usuário por não ter ficado bom visualmente).
+5. Portfolio — grid com filtros (categoria/tecnologia/status), 8 projetos, em `/portfolio`.
+   Na home, teaser com 6 projetos em destaque (`FeaturedPortfolio.tsx`) em grid vertical normal
+   com link para o portfolio completo (testamos antes um teaser com efeito de scroll horizontal,
+   mas foi removido a pedido do usuário por não ter ficado bom visualmente).
 6. Testimonials — carousel de 6+ depoimentos com rating e resultado quantificável.
 7. Planos — Startup ($2.990), Professional ($7.990, destaque popular), Enterprise (sob consulta).
 8. FAQ — accordion de perguntas frequentes (prazo, pagamento, atendimento internacional, ajustes
