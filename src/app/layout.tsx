@@ -3,8 +3,10 @@ import { Inter } from "next/font/google";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadMagnetPopup from "@/components/LeadMagnetPopup";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { LocaleProvider } from "@/context/LocaleContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { siteConfig } from "@/config/site-config";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,9 +15,27 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: "Sterk — Websites e Automações que Geram Resultados",
-  description:
-    "Websites, automações e sistemas sob medida para empresas no Brasil e nos EUA.",
+  description: siteConfig.description,
+  openGraph: {
+    title: "Sterk — Websites e Automações que Geram Resultados",
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "pt_BR",
+    type: "website",
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  email: siteConfig.contactEmail,
+  telephone: siteConfig.phone,
 };
 
 export default function RootLayout({
@@ -26,6 +46,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={inter.variable}>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <LocaleProvider>
           <AuthProvider>
             <Navigation />
@@ -34,6 +58,7 @@ export default function RootLayout({
             <LeadMagnetPopup />
           </AuthProvider>
         </LocaleProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );

@@ -32,9 +32,9 @@ export default function Navigation() {
   const activeLanguage = LANGUAGES.find((lang) => lang.code === locale)!;
 
   const navItems = [
-    { label: t("nav.services"), href: "/services" },
+    { label: t("nav.services"), href: "/#services" },
     { label: t("nav.portfolio"), href: "/portfolio" },
-    { label: t("nav.howItWorks"), href: "/how-it-works" },
+    { label: t("nav.howItWorks"), href: "/#how-it-works" },
     { label: t("nav.pricing"), href: "/pricing" },
     { label: t("nav.blog"), href: "/blog" },
     { label: t("nav.contact"), href: "#contato" },

@@ -47,7 +47,7 @@ export default function Footer() {
           </h3>
           <ul className="mt-4 space-y-2">
             {siteConfig.footerColumns.services.map((item) => (
-              <li key={item.href}>
+              <li key={item.label}>
                 <Link
                   href={item.href}
                   className="text-sm text-text-secondary transition-colors duration-fast hover:text-gold"
@@ -124,7 +124,7 @@ export default function Footer() {
           <Link href="/terms" className="hover:text-gold">
             Termos de Uso
           </Link>
-          <Link href="/gdpr" className="hover:text-gold">
+          <Link href="/privacy#gdpr" className="hover:text-gold">
             GDPR
           </Link>
         </div>

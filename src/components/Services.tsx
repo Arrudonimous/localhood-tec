@@ -47,7 +47,7 @@ export default function Services() {
   const { t } = useLocale();
 
   return (
-    <section className="bg-primary px-6 py-20 sm:px-10">
+    <section id="services" className="bg-primary px-6 py-20 sm:px-10">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-bold text-text sm:text-4xl">
           {t("services.headline")}

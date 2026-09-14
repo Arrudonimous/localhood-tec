@@ -341,13 +341,21 @@ colar no Claude Code quando chegar a etapa 14:
 
 Antes do lançamento, validar explicitamente (OK / faltando / não aplicável):
 
-- Política de privacidade e termos de uso
-- Nenhum segredo exposto no frontend; HTTPS forçado; banner de cookies
-- Meta titles/descriptions, imagem OG, favicon, sitemap.xml + robots.txt, alt text
-- Imagens otimizadas e velocidade de carregamento verificada
-- Contraste de cores, responsividade mobile, página 404 customizada, sem links quebrados
-- Validação de formulários e proteção anti-spam (captcha/honeypot)
-- Analytics configurado e uma CTA clara na página
+- [x] Política de privacidade e termos de uso — `/privacy` e `/terms` criadas com conteúdo
+      genérico; **revisar com um advogado antes de publicar de verdade** (texto não é
+      aconselhamento jurídico)
+- [ ] Nenhum segredo exposto no frontend; HTTPS forçado (depende do deploy); banner de cookies
+      (ainda não implementado — pendente)
+- [x] Meta titles/descriptions, imagem OG básica, favicon (padrão Next.js), sitemap.xml +
+      robots.txt, alt text (revisar quando entrarem imagens reais)
+- [ ] Imagens otimizadas e velocidade de carregamento verificada (sem imagens reais ainda,
+      só placeholders/gradientes)
+- [x] Contraste de cores, responsividade mobile, página 404 customizada (`not-found.tsx`),
+      links do footer/nav corrigidos (todas as rotas referenciadas agora existem)
+- [ ] Validação de formulários (feita) e proteção anti-spam (captcha/honeypot — ainda não
+      implementado, pendente)
+- [x] Analytics configurado (Google Analytics via `GoogleAnalytics.tsx`, ativa com
+      `NEXT_PUBLIC_ENABLE_ANALYTICS=true` + `NEXT_PUBLIC_GA_ID`) e CTA clara na página
 
 ## Troubleshooting comum
 
