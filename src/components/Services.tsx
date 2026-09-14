@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
 import TiltCard from "@/components/TiltCard";
 
-const phases = [
+const categories = [
   {
-    number: "1",
+    slug: "servicos",
     name: "Serviços",
     items: [
       "Websites",
@@ -19,7 +19,7 @@ const phases = [
     ],
   },
   {
-    number: "2",
+    slug: "produtos",
     name: "Produtos",
     items: [
       "SaaS para pequenas empresas",
@@ -31,7 +31,7 @@ const phases = [
     ],
   },
   {
-    number: "3",
+    slug: "escala",
     name: "Escala",
     items: [
       "Assinaturas mensais",
@@ -58,54 +58,61 @@ export default function Services() {
         </p>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-stretch">
-        {phases.map((phase, index) => (
-          <div key={phase.number} className="flex flex-1 items-stretch gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              whileHover={{ y: -8 }}
-              className="flex flex-1"
-            >
-              <TiltCard className="glass flex flex-1 flex-col rounded-lg border-2 border-gold p-8 transition-shadow duration-base hover:shadow-[0_0_24px_rgba(212,175,55,0.25)]">
-                <span className="text-5xl font-bold text-gold">
-                  {phase.number}
-                </span>
-                <h3 className="mt-2 text-xl font-bold text-text">
-                  FASE {phase.number} — {phase.name.toUpperCase()}
-                </h3>
-                <ul className="mt-4 flex-1 space-y-2">
-                  {phase.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm text-text-secondary"
-                    >
-                      • {item}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#contato"
-                  className="mt-6 text-sm font-semibold text-gold transition-colors duration-fast hover:text-gold/80"
-                >
-                  {t("services.learnMore")}
-                </a>
-              </TiltCard>
-            </motion.div>
-
-            {index < phases.length - 1 && (
-              <motion.div
-                animate={{ opacity: [0.4, 1, 0.4] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="hidden items-center text-2xl text-gold lg:flex"
+      <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
+        {categories.map((category, index) => (
+          <motion.div
+            key={category.slug}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            whileHover={{ y: -8 }}
+            className="flex"
+          >
+            <TiltCard className="glass flex flex-1 flex-col rounded-lg border-2 border-gold p-8 transition-shadow duration-base hover:shadow-[0_0_24px_rgba(212,175,55,0.25)]">
+              <h3 className="text-xl font-bold text-text">
+                {category.name.toUpperCase()}
+              </h3>
+              <ul className="mt-4 flex-1 space-y-2">
+                {category.items.map((item) => (
+                  <li key={item} className="text-sm text-text-secondary">
+                    • {item}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#contato"
+                className="mt-6 text-sm font-semibold text-gold transition-colors duration-fast hover:text-gold/80"
               >
-                →
-              </motion.div>
-            )}
-          </div>
+                {t("services.learnMore")}
+              </a>
+            </TiltCard>
+          </motion.div>
         ))}
+
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: categories.length * 0.15 }}
+          whileHover={{ y: -8 }}
+          className="flex"
+        >
+          <TiltCard className="glass flex flex-1 flex-col rounded-lg border-2 border-dashed border-gold/50 p-8 transition-shadow duration-base hover:shadow-[0_0_24px_rgba(212,175,55,0.25)]">
+            <h3 className="text-xl font-bold text-text">
+              {t("services.customTitle").toUpperCase()}
+            </h3>
+            <p className="mt-4 flex-1 text-sm text-text-secondary">
+              {t("services.customDescription")}
+            </p>
+            <a
+              href="#contato"
+              className="mt-6 text-sm font-semibold text-gold transition-colors duration-fast hover:text-gold/80"
+            >
+              {t("services.customCta")}
+            </a>
+          </TiltCard>
+        </motion.div>
       </div>
     </section>
   );

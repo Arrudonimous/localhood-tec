@@ -26,9 +26,13 @@ export const translations = {
       subheadline: "5 fases que transformam sua ideia em realidade",
     },
     services: {
-      headline: "Serviços Completos Por Fase de Crescimento",
-      subheadline: "Cada fase da sua empresa encontra a solução perfeita",
+      headline: "Opções de Produto Para Cada Processo do Seu Negócio",
+      subheadline: "Soluções independentes — escolha a que faz sentido para o seu momento",
       learnMore: "Saiba mais",
+      customTitle: "Projeto Personalizado",
+      customDescription:
+        "Não encontrou a opção ideal? Fale com nosso time e vamos desenhar uma solução sob medida para o seu negócio.",
+      customCta: "Consulte Nosso Time",
     },
     footer: {
       description:
@@ -196,9 +200,13 @@ export const translations = {
       subheadline: "5 stages that turn your idea into reality",
     },
     services: {
-      headline: "Full Services For Every Growth Stage",
-      subheadline: "Every stage of your business finds the right solution",
+      headline: "Product Options For Every Part of Your Business",
+      subheadline: "Independent solutions — pick what fits where you are right now",
       learnMore: "Learn more",
+      customTitle: "Custom Project",
+      customDescription:
+        "Didn't find the right fit? Talk to our team and we'll design a tailored solution for your business.",
+      customCta: "Talk to Our Team",
     },
     footer: {
       description:

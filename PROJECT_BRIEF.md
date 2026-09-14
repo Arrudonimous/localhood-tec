@@ -101,10 +101,13 @@ sterk/
    satisfação, anos), CTA primário/secundário.
 3. Como Funciona — timeline interativa de 5 fases: Entendimento, Ideação & Proposta,
    Desenvolvimento, Implantação, Suporte & Crescimento.
-4. Serviços por fase de crescimento: Fase 1 Serviços (websites, landing pages, e-commerce,
-   sistemas, automação, integrações, manutenção), Fase 2 Produtos/SaaS (gestão, CRM, agendamento,
-   automação de atendimento, IA), Fase 3 Escala (assinaturas, produtos próprios, marketplace, APIs,
-   licenciamento, clientes internacionais).
+4. Serviços — 3 categorias de produto independentes (não é um funil sequencial de fases):
+   Serviços (websites, landing pages, e-commerce, sistemas, automação, integrações, manutenção),
+   Produtos/SaaS (gestão, CRM, agendamento, automação de atendimento, IA), Escala (assinaturas,
+   produtos próprios, marketplace, APIs, licenciamento, clientes internacionais). Mais um 4º card
+   de "Projeto Personalizado" com CTA "Consulte Nosso Time" para quem não se encaixa nas opções
+   acima (ajuste pedido pela Francielle: antes estava rotulado como "Fase 1/2/3", o que passava a
+   impressão errada de que as três categorias eram etapas de um mesmo pacote).
 5. Portfolio — grid com filtros (categoria/tecnologia/status), 8 projetos, em `/portfolio`.
    Na home, teaser com 6 projetos em destaque (`FeaturedPortfolio.tsx`) em grid vertical normal
    com link para o portfolio completo (testamos antes um teaser com efeito de scroll horizontal,
