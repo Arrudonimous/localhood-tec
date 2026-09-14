@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { siteConfig } from "@/config/site-config";
 import { useLocale } from "@/hooks/useLocale";
+import { useAuth } from "@/hooks/useAuth";
 
 const LANGUAGES = [
   { code: "pt-BR" as const, label: "Brasil", flag: "🇧🇷" },
@@ -15,6 +16,7 @@ const CURRENCIES = ["BRL", "USD"] as const;
 
 export default function Navigation() {
   const { locale, currency, setLocale, setCurrency, t } = useLocale();
+  const { isAuthenticated, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -124,12 +126,30 @@ export default function Navigation() {
             )}
           </div>
 
-          <Link
-            href="/login"
-            className="rounded-md bg-green px-4 py-2 text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
-          >
-            {t("nav.accessDashboard")}
-          </Link>
+          {isAuthenticated ? (
+            <div className="flex items-center gap-3">
+              <Link
+                href="/dashboard"
+                className="rounded-md bg-green px-4 py-2 text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
+              >
+                {t("nav.accessDashboard")}
+              </Link>
+              <button
+                type="button"
+                onClick={() => logout()}
+                className="text-sm text-text-secondary transition-colors duration-fast hover:text-gold"
+              >
+                Sair
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-md bg-green px-4 py-2 text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
+            >
+              {t("nav.accessDashboard")}
+            </Link>
+          )}
         </div>
 
         <button

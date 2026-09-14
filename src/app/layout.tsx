@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadMagnetPopup from "@/components/LeadMagnetPopup";
 import { LocaleProvider } from "@/context/LocaleContext";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,10 +27,12 @@ export default function RootLayout({
     <html lang="pt-BR" className={inter.variable}>
       <body className="antialiased">
         <LocaleProvider>
-          <Navigation />
-          {children}
-          <Footer />
-          <LeadMagnetPopup />
+          <AuthProvider>
+            <Navigation />
+            {children}
+            <Footer />
+            <LeadMagnetPopup />
+          </AuthProvider>
         </LocaleProvider>
       </body>
     </html>
