@@ -26,7 +26,7 @@ export default function CursorGlow() {
       currentX += (targetX - currentX) * 0.08;
       currentY += (targetY - currentY) * 0.08;
       if (ref.current) {
-        ref.current.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        ref.current.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
       }
       frame = requestAnimationFrame(animate);
     };
@@ -42,7 +42,7 @@ export default function CursorGlow() {
     <div
       ref={ref}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-40 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.12] mix-blend-screen"
+      className="pointer-events-none fixed left-0 top-0 z-40 h-[480px] w-[480px] rounded-full opacity-[0.12] mix-blend-screen"
       style={{
         background:
           "radial-gradient(circle, #d4af37 0%, transparent 70%)",
