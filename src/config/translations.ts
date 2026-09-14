@@ -124,6 +124,52 @@ export const translations = {
         },
       },
     },
+    faq: {
+      headline: "Perguntas Frequentes",
+      subheadline: "Tire suas dúvidas antes de começar",
+      items: [
+        {
+          q: "Quanto tempo leva para meu projeto ficar pronto?",
+          a: "Depende do escopo e do plano contratado. Websites institucionais costumam levar de 3 a 5 semanas; projetos Enterprise têm prazo definido junto com você na proposta.",
+        },
+        {
+          q: "Como funciona o pagamento (à vista, parcelado, por fase)?",
+          a: "Aceitamos pagamento à vista com desconto ou parcelado por fase do projeto (entrada + entregas). Os detalhes são combinados na proposta.",
+        },
+        {
+          q: "Vocês atendem empresas fora do Brasil?",
+          a: "Sim, atendemos empresas no Brasil e nos EUA, com preços em BRL ou USD conforme sua localização.",
+        },
+        {
+          q: "Preciso ter tudo pronto (conteúdo, logo, textos) antes de começar?",
+          a: "Não. Podemos começar com o que você já tem e evoluir o conteúdo junto com o desenvolvimento, ou usar placeholders até você finalizar os materiais.",
+        },
+        {
+          q: "O que acontece se eu precisar de ajustes depois da entrega?",
+          a: "Os planos Professional e Enterprise incluem período de manutenção após a entrega. Fora desse período, ajustes podem ser contratados avulsos ou via plano de suporte contínuo.",
+        },
+        {
+          q: "Vocês oferecem suporte e manutenção contínua?",
+          a: "Sim, todos os planos incluem algum nível de suporte, e é possível contratar manutenção contínua separadamente.",
+        },
+        {
+          q: "Qual a diferença entre os planos Startup, Professional e Enterprise?",
+          a: "Startup é ideal para quem está começando, Professional atende empresas em crescimento com mais páginas e automações, e Enterprise é uma solução 100% customizada com equipe dedicada.",
+        },
+        {
+          q: "Como acompanho o andamento do meu projeto?",
+          a: "Você tem acesso a um painel de cliente com timeline do projeto, checklist de tarefas, documentos compartilhados e chat direto com o time.",
+        },
+        {
+          q: "Posso migrar de um site que já existe?",
+          a: "Sim, ajudamos a migrar conteúdo e, quando possível, o histórico de SEO do site atual para a nova plataforma.",
+        },
+        {
+          q: "Como funciona garantia ou reembolso?",
+          a: "Se identificarmos que não conseguimos entregar o que foi combinado na proposta, oferecemos reembolso proporcional ao que ainda não foi entregue.",
+        },
+      ],
+    },
   },
   "en-US": {
     nav: {
@@ -247,6 +293,52 @@ export const translations = {
           ],
         },
       },
+    },
+    faq: {
+      headline: "Frequently Asked Questions",
+      subheadline: "Get your questions answered before you start",
+      items: [
+        {
+          q: "How long does it take to finish my project?",
+          a: "It depends on scope and plan. Institutional websites usually take 3 to 5 weeks; Enterprise projects get a timeline defined together with you in the proposal.",
+        },
+        {
+          q: "How does payment work (upfront, installments, per phase)?",
+          a: "We accept upfront payment with a discount or installments per project phase (deposit + deliverables). Details are agreed in the proposal.",
+        },
+        {
+          q: "Do you work with companies outside Brazil?",
+          a: "Yes, we serve companies in Brazil and the US, with pricing in BRL or USD depending on your location.",
+        },
+        {
+          q: "Do I need everything ready (content, logo, copy) before starting?",
+          a: "No. We can start with what you already have and evolve the content alongside development, or use placeholders until your materials are ready.",
+        },
+        {
+          q: "What happens if I need changes after delivery?",
+          a: "Professional and Enterprise plans include a maintenance period after delivery. Outside that period, changes can be purchased separately or through an ongoing support plan.",
+        },
+        {
+          q: "Do you offer ongoing support and maintenance?",
+          a: "Yes, every plan includes some level of support, and ongoing maintenance can be purchased separately.",
+        },
+        {
+          q: "What's the difference between Startup, Professional and Enterprise?",
+          a: "Startup is ideal for those just starting out, Professional serves growing businesses with more pages and automations, and Enterprise is a 100% custom solution with a dedicated team.",
+        },
+        {
+          q: "How do I track my project's progress?",
+          a: "You get access to a client dashboard with project timeline, task checklist, shared documents and direct chat with the team.",
+        },
+        {
+          q: "Can I migrate from an existing website?",
+          a: "Yes, we help migrate content and, when possible, the SEO history of your current site to the new platform.",
+        },
+        {
+          q: "How does the guarantee or refund work?",
+          a: "If we identify that we can't deliver what was agreed in the proposal, we offer a refund proportional to what hasn't been delivered yet.",
+        },
+      ],
     },
   },
 } as const;
