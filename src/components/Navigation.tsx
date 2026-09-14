@@ -1,10 +1,44 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { siteConfig } from "@/config/site-config";
 
+const LANGUAGES = [
+  { code: "pt-BR" as const, label: "Brasil", flag: "🇧🇷" },
+  { code: "en-US" as const, label: "USA", flag: "🇺🇸" },
+];
+
+const CURRENCIES = ["BRL", "USD"] as const;
+
 export default function Navigation() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const [currencyOpen, setCurrencyOpen] = useState(false);
+  const [locale, setLocale] = useState<(typeof LANGUAGES)[number]["code"]>(
+    "pt-BR",
+  );
+  const [currency, setCurrency] =
+    useState<(typeof CURRENCIES)[number]>("BRL");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const activeLanguage = LANGUAGES.find((lang) => lang.code === locale)!;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-secondary bg-primary/95 px-8 py-4 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between">
+    <header
+      className={`sticky top-0 z-50 border-b border-secondary px-8 py-4 transition-colors duration-base ${
+        scrolled ? "bg-primary/95 backdrop-blur" : "bg-primary"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <Link href="/" className="font-sans text-lg font-bold text-text">
           {siteConfig.name.toUpperCase()}
         </Link>
@@ -21,13 +55,146 @@ export default function Navigation() {
           ))}
         </nav>
 
-        <Link
-          href="/login"
-          className="rounded-md bg-green px-4 py-2 text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
+        <div className="hidden items-center gap-4 md:flex">
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => {
+                setLangOpen((open) => !open);
+                setCurrencyOpen(false);
+              }}
+              className="flex items-center gap-1 text-sm text-text transition-colors duration-fast hover:text-gold"
+            >
+              <span>{activeLanguage.flag}</span>
+              <span>{activeLanguage.code === "pt-BR" ? "BR" : "EN"}</span>
+            </button>
+            {langOpen && (
+              <div className="absolute right-0 top-full mt-2 w-32 rounded-md border border-secondary bg-secondary py-1 shadow-lg">
+                {LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    type="button"
+                    onClick={() => {
+                      setLocale(lang.code);
+                      setLangOpen(false);
+                    }}
+                    className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-text transition-colors duration-fast hover:text-gold"
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => {
+                setCurrencyOpen((open) => !open);
+                setLangOpen(false);
+              }}
+              className="text-sm text-text transition-colors duration-fast hover:text-gold"
+            >
+              {currency}
+            </button>
+            {currencyOpen && (
+              <div className="absolute right-0 top-full mt-2 w-24 rounded-md border border-secondary bg-secondary py-1 shadow-lg">
+                {CURRENCIES.map((code) => (
+                  <button
+                    key={code}
+                    type="button"
+                    onClick={() => {
+                      setCurrency(code);
+                      setCurrencyOpen(false);
+                    }}
+                    className="w-full px-3 py-2 text-left text-sm text-text transition-colors duration-fast hover:text-gold"
+                  >
+                    {code}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/login"
+            className="rounded-md bg-green px-4 py-2 text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
+          >
+            Acessar Painel
+          </Link>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Abrir menu"
+          onClick={() => setMobileOpen(true)}
+          className="flex flex-col gap-1.5 md:hidden"
         >
-          Acessar Painel
-        </Link>
+          <span className="h-0.5 w-6 bg-text" />
+          <span className="h-0.5 w-6 bg-text" />
+          <span className="h-0.5 w-6 bg-text" />
+        </button>
       </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/60 md:hidden"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="fixed right-0 top-0 z-50 flex h-full w-64 flex-col gap-6 bg-secondary p-8 md:hidden"
+            >
+              <button
+                type="button"
+                aria-label="Fechar menu"
+                onClick={() => setMobileOpen(false)}
+                className="self-end text-2xl text-text"
+              >
+                ×
+              </button>
+
+              {siteConfig.nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-base text-text transition-colors duration-fast hover:text-gold"
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <div className="flex items-center gap-3 border-t border-primary pt-6 text-sm text-text-secondary">
+                <span>
+                  {activeLanguage.flag} {activeLanguage.code}
+                </span>
+                <span>•</span>
+                <span>{currency}</span>
+              </div>
+
+              <Link
+                href="/login"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-md bg-green px-4 py-2 text-center text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
+              >
+                Acessar Painel
+              </Link>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
