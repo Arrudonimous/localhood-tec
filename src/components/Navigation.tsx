@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { siteConfig } from "@/config/site-config";
+import { useLocale } from "@/hooks/useLocale";
 
 const LANGUAGES = [
   { code: "pt-BR" as const, label: "Brasil", flag: "🇧🇷" },
@@ -13,15 +14,11 @@ const LANGUAGES = [
 const CURRENCIES = ["BRL", "USD"] as const;
 
 export default function Navigation() {
+  const { locale, currency, setLocale, setCurrency, t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [currencyOpen, setCurrencyOpen] = useState(false);
-  const [locale, setLocale] = useState<(typeof LANGUAGES)[number]["code"]>(
-    "pt-BR",
-  );
-  const [currency, setCurrency] =
-    useState<(typeof CURRENCIES)[number]>("BRL");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -31,6 +28,15 @@ export default function Navigation() {
   }, []);
 
   const activeLanguage = LANGUAGES.find((lang) => lang.code === locale)!;
+
+  const navItems = [
+    { label: t("nav.services"), href: "/services" },
+    { label: t("nav.portfolio"), href: "/portfolio" },
+    { label: t("nav.howItWorks"), href: "/how-it-works" },
+    { label: t("nav.pricing"), href: "/pricing" },
+    { label: t("nav.blog"), href: "/blog" },
+    { label: t("nav.contact"), href: "#contato" },
+  ];
 
   return (
     <header
@@ -44,7 +50,7 @@ export default function Navigation() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {siteConfig.nav.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -122,7 +128,7 @@ export default function Navigation() {
             href="/login"
             className="rounded-md bg-green px-4 py-2 text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
           >
-            Acessar Painel
+            {t("nav.accessDashboard")}
           </Link>
         </div>
 
@@ -165,7 +171,7 @@ export default function Navigation() {
                 ×
               </button>
 
-              {siteConfig.nav.map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -189,7 +195,7 @@ export default function Navigation() {
                 onClick={() => setMobileOpen(false)}
                 className="rounded-md bg-green px-4 py-2 text-center text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
               >
-                Acessar Painel
+                {t("nav.accessDashboard")}
               </Link>
             </motion.div>
           </>

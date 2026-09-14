@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale } from "@/hooks/useLocale";
 
 const phases = [
   {
@@ -43,14 +44,16 @@ const phases = [
 ];
 
 export default function Services() {
+  const { t } = useLocale();
+
   return (
     <section className="bg-primary px-6 py-20 sm:px-10">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-bold text-text sm:text-4xl">
-          Serviços Completos Por Fase de Crescimento
+          {t("services.headline")}
         </h2>
         <p className="mt-4 text-base text-text-secondary">
-          Cada fase da sua empresa encontra a solução perfeita
+          {t("services.subheadline")}
         </p>
       </div>
 
@@ -85,7 +88,7 @@ export default function Services() {
                 href="#contato"
                 className="mt-6 text-sm font-semibold text-gold transition-colors duration-fast hover:text-gold/80"
               >
-                Saiba mais
+                {t("services.learnMore")}
               </a>
             </motion.div>
 

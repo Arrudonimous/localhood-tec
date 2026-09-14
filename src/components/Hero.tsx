@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const stats = [
-  { icon: "✓", value: "200+", label: "Projetos Realizados" },
-  { icon: "★", value: "95%", label: "Satisfação de Clientes" },
-  { icon: "⏱", value: "15+", label: "Anos de Expertise" },
-];
+import { useLocale } from "@/hooks/useLocale";
 
 export default function Hero() {
+  const { t } = useLocale();
+
+  const stats = [
+    { icon: "✓", value: "200+", label: t("hero.statsProjects") },
+    { icon: "★", value: "95%", label: t("hero.statsSatisfaction") },
+    { icon: "⏱", value: "15+", label: t("hero.statsExpertise") },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary to-secondary px-6 py-20 sm:px-10 lg:py-[120px]">
       <svg
@@ -41,11 +44,10 @@ export default function Hero() {
           className="lg:[grid-area:headline]"
         >
           <h1 className="text-4xl font-bold leading-tight text-text sm:text-5xl">
-            Websites e Automações que Geram Resultados
+            {t("hero.headline")}
           </h1>
           <p className="mt-6 max-w-lg text-sm text-text-secondary sm:text-lg">
-            De startups a grandes empresas, transformamos ideias em soluções
-            digitais profissionais.
+            {t("hero.subheadline")}
           </p>
         </motion.div>
 
@@ -115,13 +117,13 @@ export default function Hero() {
             href="#contato"
             className="rounded-md bg-green px-8 py-3 text-center text-sm font-bold text-primary transition-colors duration-fast hover:bg-green-hover"
           >
-            Solicitar Proposta
+            {t("hero.ctaPrimary")}
           </a>
           <a
             href="/portfolio"
             className="rounded-md border-2 border-gold px-8 py-3 text-center text-sm font-bold text-gold transition-colors duration-fast hover:bg-gold/10"
           >
-            Ver Nossos Projetos
+            {t("hero.ctaSecondary")}
           </a>
         </motion.div>
       </div>
