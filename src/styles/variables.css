@@ -1,0 +1,21 @@
+:root {
+  --color-primary: #0a0e27;
+  --color-secondary: #1a1f3a;
+  --color-gold: #d4af37;
+  --color-green: #00d084;
+  --color-green-hover: #00e699;
+  --color-text: #f5f5f5;
+  --color-text-secondary: #9ca3af;
+  --color-border: #333333;
+  --color-error: #ff6b6b;
+  --color-copyright: #666666;
+
+  --background: var(--color-primary);
+  --foreground: var(--color-text);
+
+  --spacing-section-y: 80px;
+  --spacing-section-x: 40px;
+
+  --transition-fast: 200ms;
+  --transition-base: 300ms;
+}
