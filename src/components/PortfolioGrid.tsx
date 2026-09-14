@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { portfolioProjects } from "@/lib/mock-portfolio";
+import TiltCard from "@/components/TiltCard";
 
 const categories = ["Todos", "Website", "E-commerce", "App", "Automação"] as const;
 const statuses = ["Todos", "Realizado", "Em Andamento"] as const;
@@ -65,41 +66,44 @@ export default function PortfolioGrid() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
+            className="h-full"
           >
-            <Link
-              href={`/portfolio/${project.slug}`}
-              className="flex h-full flex-col rounded-lg border border-secondary bg-secondary p-5 transition-all duration-base hover:-translate-y-1 hover:border-gold"
-            >
-              <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
-                {project.category}
-              </div>
-              <div className="mt-4 flex items-center justify-between">
-                <p className="font-bold text-text">{project.name}</p>
-                <span
-                  className={`text-xs font-semibold ${
-                    project.status === "Realizado" ? "text-green" : "text-gold"
-                  }`}
-                >
-                  {project.status}
-                </span>
-              </div>
-              <p className="mt-2 flex-1 text-sm text-text-secondary">
-                {project.description}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
+            <TiltCard className="h-full">
+              <Link
+                href={`/portfolio/${project.slug}`}
+                className="glass flex h-full flex-col rounded-lg p-5 transition-all duration-base hover:-translate-y-1 hover:border-gold/60"
+              >
+                <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
+                  {project.category}
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="font-bold text-text">{project.name}</p>
                   <span
-                    key={tech}
-                    className="rounded-full bg-primary px-2 py-1 text-xs text-text-secondary"
+                    className={`text-xs font-semibold ${
+                      project.status === "Realizado" ? "text-green" : "text-gold"
+                    }`}
                   >
-                    {tech}
+                    {project.status}
                   </span>
-                ))}
-              </div>
-              <span className="mt-4 text-sm font-semibold text-gold">
-                Ver Detalhes →
-              </span>
-            </Link>
+                </div>
+                <p className="mt-2 flex-1 text-sm text-text-secondary">
+                  {project.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full bg-primary px-2 py-1 text-xs text-text-secondary"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <span className="mt-4 text-sm font-semibold text-gold">
+                  Ver Detalhes →
+                </span>
+              </Link>
+            </TiltCard>
           </motion.div>
         ))}
 

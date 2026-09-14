@@ -40,7 +40,7 @@ export default function ResetPasswordPage() {
 
   return (
     <main className="flex min-h-[80vh] items-center justify-center bg-gradient-to-br from-primary to-secondary px-6 py-16">
-      <div className="w-full max-w-md rounded-lg border border-gold bg-secondary p-10">
+      <div className="glass w-full max-w-md rounded-lg border-gold/40 p-10">
         <Link href="/" className="text-lg font-bold text-text">
           STERK
         </Link>

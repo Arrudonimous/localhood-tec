@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
+import TiltCard from "@/components/TiltCard";
 
 export default function Hero() {
   const { t } = useLocale();
@@ -55,26 +56,28 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="flex aspect-square w-full items-center justify-center rounded-2xl bg-gradient-to-br from-secondary to-primary lg:aspect-auto lg:h-full lg:min-h-[420px] lg:[grid-area:illustration]"
+          className="lg:[grid-area:illustration]"
         >
-          <svg
-            aria-hidden
-            viewBox="0 0 200 200"
-            className="h-2/3 w-2/3 text-gold/40"
-          >
-            <polygon
-              points="100,10 190,60 190,140 100,190 10,140 10,60"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            />
-            <polygon
-              points="100,50 150,75 150,125 100,150 50,125 50,75"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            />
-          </svg>
+          <TiltCard className="glass flex aspect-square w-full items-center justify-center rounded-2xl lg:aspect-auto lg:h-full lg:min-h-[420px]">
+            <svg
+              aria-hidden
+              viewBox="0 0 200 200"
+              className="h-2/3 w-2/3 text-gold/40"
+            >
+              <polygon
+                points="100,10 190,60 190,140 100,190 10,140 10,60"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <polygon
+                points="100,50 150,75 150,125 100,150 50,125 50,75"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+            </svg>
+          </TiltCard>
         </motion.div>
 
         <div className="flex flex-wrap gap-8 sm:gap-12 lg:[grid-area:stats]">
