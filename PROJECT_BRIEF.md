@@ -316,8 +316,8 @@ código:
 
 O que falta e depende de você:
 
-1. Criar conta na [Vercel](https://vercel.com) (se ainda não tiver) e importar o novo repositório
-   do GitHub criado para o projeto renomeado (`Arrudonimous/localhood-tec` ou nome equivalente).
+1. Criar conta na [Vercel](https://vercel.com) (se ainda não tiver) e importar o repositório
+   [`Arrudonimous/localhood-tec`](https://github.com/Arrudonimous/localhood-tec) do GitHub.
 2. Configurar em Project Settings → Environment Variables da Vercel todas as chaves do
    `.env.example` com valores reais (especialmente `JWT_SECRET` com um valor forte e único —
    nunca reaproveitar o do `.env.local` de dev).
