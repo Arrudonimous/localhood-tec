@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site-config";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade — Sterk",
-  description: "Como a Sterk coleta, usa e protege seus dados pessoais.",
+  title: `Política de Privacidade — ${siteConfig.name}`,
+  description: `Como a ${siteConfig.name} coleta, usa e protege seus dados pessoais.`,
 };
 
 // Conteúdo genérico de referência — revisar com um advogado antes de publicar

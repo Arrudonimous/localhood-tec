@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site-config";
 
 export const metadata: Metadata = {
-  title: "Termos de Uso — Sterk",
-  description: "Termos e condições de uso do site e dos serviços da Sterk.",
+  title: `Termos de Uso — ${siteConfig.name}`,
+  description: `Termos e condições de uso do site e dos serviços da ${siteConfig.name}.`,
 };
 
 // Conteúdo genérico de referência — revisar com um advogado antes de publicar

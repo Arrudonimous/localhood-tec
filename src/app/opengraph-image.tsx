@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { siteConfig } from "@/config/site-config";
 
 export const runtime = "edge";
-export const alt = "Sterk — Websites e Automações que Geram Resultados";
+export const alt = `${siteConfig.name} — Websites e Automações que Geram Resultados`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +30,7 @@ export default function OpengraphImage() {
             color: "#f5f5f5",
           }}
         >
-          STERK
+          {siteConfig.name.toUpperCase()}
         </div>
         <div
           style={{

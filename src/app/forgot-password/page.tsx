@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { siteConfig } from "@/config/site-config";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ export default function ForgotPasswordPage() {
     <main className="flex min-h-[80vh] items-center justify-center bg-gradient-to-br from-primary to-secondary px-6 py-16">
       <div className="glass w-full max-w-md rounded-lg border-gold/40 p-10">
         <Link href="/" className="text-lg font-bold text-text">
-          STERK
+          {siteConfig.name.toUpperCase()}
         </Link>
         <h1 className="mt-6 text-3xl font-bold text-text">Recuperar Senha</h1>
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog-store";
+import { siteConfig } from "@/config/site-config";
 
 export async function generateMetadata({
   params,
@@ -9,10 +10,10 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug);
-  if (!post) return { title: "Post não encontrado — Sterk" };
+  if (!post) return { title: `Post não encontrado — ${siteConfig.name}` };
 
   return {
-    title: `${post.title} — Sterk`,
+    title: `${post.title} — ${siteConfig.name}`,
     description: post.excerpt,
     openGraph: {
       title: post.title,

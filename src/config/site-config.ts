@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "Sterk",
+  name: "LocalHood Tec",
   description:
     "Websites, automações e sistemas sob medida para empresas no Brasil e nos EUA.",
-  url: "https://sterk.com.br",
-  contactEmail: "contato@sterk.com.br",
+  url: "https://localhoodtec.com.br",
+  contactEmail: "contato@localhoodtec.com.br",
   phone: "+55 (11) 4000-0000",
   whatsappUrl: "https://wa.me/5511400000000",
   businessHours: "Seg-Sex 9h-18h (Horário de Brasília)",

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocale } from "@/hooks/useLocale";
+import { siteConfig } from "@/config/site-config";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function RegisterPage() {
     <main className="flex min-h-[80vh] items-center justify-center bg-gradient-to-br from-primary to-secondary px-6 py-16">
       <div className="glass w-full max-w-md rounded-lg border-gold/40 p-10">
         <Link href="/" className="text-lg font-bold text-text">
-          STERK
+          {siteConfig.name.toUpperCase()}
         </Link>
         <h1 className="mt-6 text-3xl font-bold text-text">Registrar</h1>
         <p className="mt-1 text-sm text-text-secondary">Crie sua conta</p>

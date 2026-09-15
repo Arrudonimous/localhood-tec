@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site-config";
 
 export const metadata: Metadata = {
-  title: "Sobre Nós — Sterk",
-  description: "Conheça a Sterk, nosso time e como trabalhamos.",
+  title: `Sobre Nós — ${siteConfig.name}`,
+  description: `Conheça a ${siteConfig.name}, nosso time e como trabalhamos.`,
 };
 
 export default function AboutPage() {

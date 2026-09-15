@@ -18,10 +18,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "Sterk — Websites e Automações que Geram Resultados",
+  title: "LocalHood Tec — Websites e Automações que Geram Resultados",
   description: siteConfig.description,
   openGraph: {
-    title: "Sterk — Websites e Automações que Geram Resultados",
+    title: "LocalHood Tec — Websites e Automações que Geram Resultados",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,

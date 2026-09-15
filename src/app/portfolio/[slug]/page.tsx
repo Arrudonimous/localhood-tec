@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { portfolioProjects } from "@/lib/mock-portfolio";
+import { siteConfig } from "@/config/site-config";
 
 export function generateStaticParams() {
   return portfolioProjects.map((project) => ({ slug: project.slug }));
@@ -14,7 +15,7 @@ export function generateMetadata({
 }): Metadata {
   const project = portfolioProjects.find((p) => p.slug === params.slug);
   return {
-    title: project ? `${project.name} — Sterk` : "Projeto — Sterk",
+    title: project ? `${project.name} — ${siteConfig.name}` : `Projeto — ${siteConfig.name}`,
     description: project?.description,
   };
 }

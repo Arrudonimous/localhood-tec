@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/blog-store";
+import { siteConfig } from "@/config/site-config";
 
 export const metadata: Metadata = {
-  title: "Blog — Sterk",
+  title: `Blog — ${siteConfig.name}`,
   description:
     "Artigos sobre e-commerce, design, automação e negócios digitais.",
 };

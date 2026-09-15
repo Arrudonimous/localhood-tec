@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import PortfolioGrid from "@/components/PortfolioGrid";
+import { siteConfig } from "@/config/site-config";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Sterk",
-  description: "Projetos de websites, e-commerce, apps e automações entregues pela Sterk.",
+  title: `Portfolio — ${siteConfig.name}`,
+  description: `Projetos de websites, e-commerce, apps e automações entregues pela ${siteConfig.name}.`,
 };
 
 export default function PortfolioPage() {

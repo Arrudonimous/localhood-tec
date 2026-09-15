@@ -1,9 +1,10 @@
-# PROJECT_BRIEF — Sterk
+# PROJECT_BRIEF — LocalHood Tec
 
 Website institucional + painel de cliente para venda de websites, automações e sistemas.
 Público-alvo: empresas no Brasil e nos EUA. Consolidado a partir de 3 documentos de referência
 (`GUIA RAPIDO.pdf`, `PROMPTS CLAUDE CODE.pdf`, `projeto agencia tech.pdf`), com o nome de marca
-atualizado de "Agência Tech" para **Sterk**.
+atualizado de "Agência Tech" para **Sterk**, e depois renomeado para **LocalHood Tec**
+(2026-09-15, a pedido do usuário).
 
 ## Visão geral
 
@@ -15,7 +16,7 @@ atualizado de "Agência Tech" para **Sterk**.
 
 ## Pendências de negócio (resolver antes/durante as fases indicadas)
 
-- [ ] Domínio definido e registrado (ex: sterk.com.br / sterk.com)
+- [ ] Domínio definido e registrado (ex: localhoodtec.com.br / localhoodtec.com)
 - [ ] Provider de email transacional (SendGrid / Resend / Mailtrap para dev)
 - [ ] Contas de API: câmbio (exchangerate-api.com ou openexchangerates.org), geo IP (ipapi.co),
       CRM opcional (HubSpot/Pipedrive)
@@ -71,7 +72,7 @@ de API o câmbio/geo ficam com fallback fixo.
 ## Estrutura de pastas
 
 ```
-sterk/
+localhood-tec/
 ├─ public/{images,icons,fonts}/
 ├─ src/
 │  ├─ app/
@@ -315,19 +316,19 @@ código:
 
 O que falta e depende de você:
 
-1. Criar conta na [Vercel](https://vercel.com) (se ainda não tiver) e importar o repositório
-   `Arrudonimous/sterk` do GitHub.
+1. Criar conta na [Vercel](https://vercel.com) (se ainda não tiver) e importar o novo repositório
+   do GitHub criado para o projeto renomeado (`Arrudonimous/localhood-tec` ou nome equivalente).
 2. Configurar em Project Settings → Environment Variables da Vercel todas as chaves do
    `.env.example` com valores reais (especialmente `JWT_SECRET` com um valor forte e único —
    nunca reaproveitar o do `.env.local` de dev).
-3. Registrar o domínio final (ex: sterk.com.br) em um registrador (Registro.br, Namecheap, etc).
+3. Registrar o domínio final (ex: localhoodtec.com.br) em um registrador (Registro.br, Namecheap, etc).
 4. Adicionar o domínio em Project Settings → Domains na Vercel e apontar o DNS para a Vercel
    (ou usar Cloudflare na frente como CDN, seguindo as instruções que a própria Vercel mostra
    ao adicionar o domínio).
 5. A Vercel emite o certificado SSL automaticamente assim que o DNS propagar — não precisa
    configurar nada manualmente.
 6. Trocar `url` em `src/config/site-config.ts` para o domínio final antes do primeiro deploy
-   (hoje está com o placeholder `https://sterk.com.br`).
+   (hoje está com o placeholder `https://localhoodtec.com.br`).
 
 Depois desses passos, cada push na branch `master` faz deploy automático na Vercel.
 
@@ -369,7 +370,7 @@ colar no Claude Code quando chegar a etapa 14:
 
 ## Fluxo de trabalho com Claude Code
 
-1. Copiar o prompt da etapa da tabela acima (do PDF indicado, adaptando "Agência Tech" para "Sterk").
+1. Copiar o prompt da etapa da tabela acima (do PDF indicado, adaptando "Agência Tech" para "LocalHood Tec").
 2. Colar no Claude Code e aguardar execução.
 3. Testar em `http://localhost:3000` (layout, responsividade, console sem erros).
 4. Se OK → próxima etapa. Se erro → descrever o erro e o componente para o Claude corrigir.

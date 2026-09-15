@@ -20,7 +20,7 @@ const emptyForm = {
   content: "",
   category: "",
   tags: "",
-  author: "Equipe Sterk",
+  author: "Equipe LocalHood Tec",
   date: new Date().toISOString().slice(0, 10),
   readTimeMinutes: 5,
 };

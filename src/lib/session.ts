@@ -1,6 +1,6 @@
 import { SignJWT, jwtVerify } from "jose";
 
-export const AUTH_COOKIE = "sterk_token";
+export const AUTH_COOKIE = "localhood_tec_token";
 const TOKEN_TTL = "7d";
 
 function getSecretKey() {
