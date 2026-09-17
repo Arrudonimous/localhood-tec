@@ -66,6 +66,17 @@ export const portfolioProjects: PortfolioProject[] = [
     image: "/portfolio/contabilidade-rocha.jpg",
   },
   {
+    slug: "snugglify",
+    name: "Snugglify",
+    category: "E-commerce",
+    technologies: ["Next.js", "TypeScript", "Tailwind", "Shopify-ready"],
+    description:
+      "Loja online de produtos para bebês e itens personalizados (bolsas de maternidade, mochilas, malas de viagem), com catálogo, carrinho, checkout via WhatsApp e arquitetura pronta para conectar fornecedores via Shopify.",
+    status: "Em Andamento",
+    link: "https://snugglify.vercel.app/",
+    image: "/portfolio/snugglify.jpg",
+  },
+  {
     slug: "trainya",
     name: "Trainya",
     category: "App",
