@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site-config";
 import { useLocale } from "@/hooks/useLocale";
@@ -19,9 +20,12 @@ export default function Footer() {
     <footer className="border-t border-secondary bg-primary px-8 py-12 lg:min-h-[400px] lg:py-16">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 lg:grid-cols-5">
         <div>
-          <p className="font-sans text-lg font-bold text-text">
-            {siteConfig.name.toUpperCase()}
-          </p>
+          <div className="flex items-center gap-2">
+            <Image src="/logo-icon.svg" alt="" width={28} height={28} />
+            <p className="font-sans text-lg font-bold text-text">
+              LocalHood <span className="text-[#5B93F5]">Tec</span>
+            </p>
+          </div>
           <p className="mt-2 max-w-xs text-sm text-text-secondary">
             {t("footer.description")}
           </p>

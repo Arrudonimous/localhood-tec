@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
-import { siteConfig } from "@/config/site-config";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -44,8 +44,9 @@ export default function LoginPage() {
   return (
     <main className="flex min-h-[80vh] items-center justify-center bg-gradient-to-br from-primary to-secondary px-6 py-16">
       <div className="glass w-full max-w-md rounded-lg border-gold/40 p-10">
-        <Link href="/" className="text-lg font-bold text-text">
-          {siteConfig.name.toUpperCase()}
+        <Link href="/" className="flex items-center gap-2 text-lg font-bold text-text">
+          <Image src="/logo-icon.svg" alt="" width={28} height={28} />
+          LocalHood <span className="text-[#5B93F5]">Tec</span>
         </Link>
         <h1 className="mt-6 text-3xl font-bold text-text">Login</h1>
         <p className="mt-1 text-sm text-text-secondary">Acesse seu painel</p>

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { siteConfig } from "@/config/site-config";
 import { useLocale } from "@/hooks/useLocale";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -49,8 +49,11 @@ export default function Navigation() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <Link href="/" className="font-sans text-lg font-bold text-text">
-          {siteConfig.name.toUpperCase()}
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/logo-icon.svg" alt="" width={32} height={32} priority />
+          <span className="font-sans text-lg font-bold text-text">
+            LocalHood <span className="text-[#5B93F5]">Tec</span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
