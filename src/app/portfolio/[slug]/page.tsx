@@ -38,9 +38,17 @@ export default function PortfolioDetailPage({
           ← Voltar para o Portfolio
         </Link>
 
-        <div className="mt-6 flex aspect-video items-center justify-center rounded-lg bg-gradient-to-br from-secondary to-primary text-text-secondary">
-          {project.category}
-        </div>
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={`Preview do site ${project.name}`}
+            className="mt-6 aspect-video w-full rounded-lg object-cover"
+          />
+        ) : (
+          <div className="mt-6 flex aspect-video items-center justify-center rounded-lg bg-gradient-to-br from-secondary to-primary text-text-secondary">
+            {project.category}
+          </div>
+        )}
 
         <div className="mt-6 flex items-center justify-between">
           <h1 className="text-3xl font-bold text-text">{project.name}</h1>
@@ -84,7 +92,7 @@ export default function PortfolioDetailPage({
               rel="noreferrer"
               className="inline-block rounded-md border-2 border-gold px-6 py-3 text-sm font-bold text-gold transition-colors duration-fast hover:bg-gold/10"
             >
-              Ver site ao vivo ↗
+              {project.linkLabel ?? "Ver site ao vivo ↗"}
             </a>
           )}
         </div>

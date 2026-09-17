@@ -7,7 +7,7 @@ import { portfolioProjects } from "@/lib/mock-portfolio";
 import TiltCard from "@/components/TiltCard";
 
 const categories = ["Todos", "Website", "E-commerce", "App", "Automação"] as const;
-const statuses = ["Todos", "Realizado", "Em Andamento", "Projeto Conceito"] as const;
+const statuses = ["Todos", "Realizado", "Em Andamento", "Projeto Conceito", "Projeto Acadêmico"] as const;
 
 function statusColorClass(status: string) {
   if (status === "Realizado") return "text-green";
@@ -79,9 +79,17 @@ export default function PortfolioGrid() {
                 href={`/portfolio/${project.slug}`}
                 className="glass flex h-full flex-col rounded-lg p-5 transition-all duration-base hover:-translate-y-1 hover:border-gold/60"
               >
-                <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
-                  {project.category}
-                </div>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`Preview do site ${project.name}`}
+                    className="aspect-video w-full rounded-md object-cover"
+                  />
+                ) : (
+                  <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
+                    {project.category}
+                  </div>
+                )}
                 <div className="mt-4 flex items-center justify-between">
                   <p className="font-bold text-text">{project.name}</p>
                   <span className={`text-xs font-semibold ${statusColorClass(project.status)}`}>
