@@ -7,6 +7,12 @@ import TiltCard from "@/components/TiltCard";
 
 const featured = portfolioProjects.slice(0, 6);
 
+function statusColorClass(status: string) {
+  if (status === "Realizado") return "text-green";
+  if (status === "Em Andamento") return "text-gold";
+  return "text-text-secondary";
+}
+
 export default function FeaturedPortfolio() {
   return (
     <section className="bg-primary px-6 py-20 sm:px-10">
@@ -15,7 +21,7 @@ export default function FeaturedPortfolio() {
           Projetos em Destaque
         </h2>
         <p className="mt-4 text-base text-text-secondary">
-          Alguns dos projetos que já entregamos para nossos clientes
+          Projetos que já desenvolvemos e conceitos que mostram o que fazemos
         </p>
       </div>
 
@@ -37,7 +43,12 @@ export default function FeaturedPortfolio() {
                 <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
                   {project.category}
                 </div>
-                <p className="mt-4 font-bold text-text">{project.name}</p>
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="font-bold text-text">{project.name}</p>
+                  <span className={`text-xs font-semibold ${statusColorClass(project.status)}`}>
+                    {project.status}
+                  </span>
+                </div>
                 <p className="mt-2 flex-1 text-sm text-text-secondary">
                   {project.description}
                 </p>

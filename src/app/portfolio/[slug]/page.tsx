@@ -46,7 +46,11 @@ export default function PortfolioDetailPage({
           <h1 className="text-3xl font-bold text-text">{project.name}</h1>
           <span
             className={`text-sm font-semibold ${
-              project.status === "Realizado" ? "text-green" : "text-gold"
+              project.status === "Realizado"
+                ? "text-green"
+                : project.status === "Em Andamento"
+                  ? "text-gold"
+                  : "text-text-secondary"
             }`}
           >
             {project.status}
@@ -66,12 +70,24 @@ export default function PortfolioDetailPage({
           ))}
         </div>
 
-        <a
-          href="#contato"
-          className="mt-10 inline-block rounded-md bg-green px-6 py-3 text-sm font-bold text-primary transition-colors duration-fast hover:bg-green-hover"
-        >
-          Quero um projeto assim
-        </a>
+        <div className="mt-10 flex flex-wrap gap-4">
+          <a
+            href="#contato"
+            className="inline-block rounded-md bg-green px-6 py-3 text-sm font-bold text-primary transition-colors duration-fast hover:bg-green-hover"
+          >
+            Quero um projeto assim
+          </a>
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block rounded-md border-2 border-gold px-6 py-3 text-sm font-bold text-gold transition-colors duration-fast hover:bg-gold/10"
+            >
+              Ver site ao vivo ↗
+            </a>
+          )}
+        </div>
       </div>
     </main>
   );

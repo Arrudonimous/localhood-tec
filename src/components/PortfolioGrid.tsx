@@ -7,7 +7,13 @@ import { portfolioProjects } from "@/lib/mock-portfolio";
 import TiltCard from "@/components/TiltCard";
 
 const categories = ["Todos", "Website", "E-commerce", "App", "Automação"] as const;
-const statuses = ["Todos", "Realizado", "Em Andamento"] as const;
+const statuses = ["Todos", "Realizado", "Em Andamento", "Projeto Conceito"] as const;
+
+function statusColorClass(status: string) {
+  if (status === "Realizado") return "text-green";
+  if (status === "Em Andamento") return "text-gold";
+  return "text-text-secondary";
+}
 
 export default function PortfolioGrid() {
   const [category, setCategory] = useState<(typeof categories)[number]>("Todos");
@@ -78,11 +84,7 @@ export default function PortfolioGrid() {
                 </div>
                 <div className="mt-4 flex items-center justify-between">
                   <p className="font-bold text-text">{project.name}</p>
-                  <span
-                    className={`text-xs font-semibold ${
-                      project.status === "Realizado" ? "text-green" : "text-gold"
-                    }`}
-                  >
+                  <span className={`text-xs font-semibold ${statusColorClass(project.status)}`}>
                     {project.status}
                   </span>
                 </div>
