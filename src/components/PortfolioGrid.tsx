@@ -4,6 +4,13 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { portfolioProjects } from "@/lib/mock-portfolio";
+import {
+  getCategoryLabel,
+  getConceptBadgeLabel,
+  getDescription,
+  getStatusLabel,
+} from "@/lib/portfolio-i18n";
+import { useLocale } from "@/hooks/useLocale";
 import TiltCard from "@/components/TiltCard";
 
 const categories = ["Todos", "Website", "E-commerce", "App", "Automação"] as const;
@@ -16,6 +23,7 @@ function statusColorClass(status: string) {
 }
 
 export default function PortfolioGrid() {
+  const { locale } = useLocale();
   const [category, setCategory] = useState<(typeof categories)[number]>("Todos");
   const [status, setStatus] = useState<(typeof statuses)[number]>("Todos");
 
@@ -42,7 +50,11 @@ export default function PortfolioGrid() {
                   : "border-secondary text-text-secondary hover:text-gold"
               }`}
             >
-              {option}
+              {option === "Todos"
+                ? locale === "en-US"
+                  ? "All"
+                  : "Todos"
+                : getCategoryLabel(option, locale)}
             </button>
           ))}
         </div>
@@ -59,7 +71,11 @@ export default function PortfolioGrid() {
                   : "border-secondary text-text-secondary hover:text-green"
               }`}
             >
-              {option}
+              {option === "Todos"
+                ? locale === "en-US"
+                  ? "All"
+                  : "Todos"
+                : getStatusLabel(option, locale)}
             </button>
           ))}
         </div>
@@ -87,17 +103,22 @@ export default function PortfolioGrid() {
                   />
                 ) : (
                   <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
-                    {project.category}
+                    {getCategoryLabel(project.category, locale)}
                   </div>
                 )}
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-4 flex items-center justify-between gap-2">
                   <p className="font-bold text-text">{project.name}</p>
                   <span className={`text-xs font-semibold ${statusColorClass(project.status)}`}>
-                    {project.status}
+                    {getStatusLabel(project.status, locale)}
                   </span>
                 </div>
+                {!project.isReal && (
+                  <span className="mt-2 inline-block w-fit rounded-full border border-text-secondary/40 px-2 py-0.5 text-[10px] uppercase tracking-wide text-text-secondary">
+                    {getConceptBadgeLabel(locale)}
+                  </span>
+                )}
                 <p className="mt-2 flex-1 text-sm text-text-secondary">
-                  {project.description}
+                  {getDescription(project, locale)}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
@@ -110,7 +131,7 @@ export default function PortfolioGrid() {
                   ))}
                 </div>
                 <span className="mt-4 text-sm font-semibold text-gold">
-                  Ver Detalhes →
+                  {locale === "en-US" ? "View Details →" : "Ver Detalhes →"}
                 </span>
               </Link>
             </TiltCard>
@@ -119,7 +140,9 @@ export default function PortfolioGrid() {
 
         {filtered.length === 0 && (
           <p className="col-span-full text-center text-text-secondary">
-            Nenhum projeto encontrado para esse filtro.
+            {locale === "en-US"
+              ? "No projects match this filter."
+              : "Nenhum projeto encontrado para esse filtro."}
           </p>
         )}
       </div>

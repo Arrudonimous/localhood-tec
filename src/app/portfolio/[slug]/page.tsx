@@ -50,7 +50,7 @@ export default function PortfolioDetailPage({
           </div>
         )}
 
-        <div className="mt-6 flex items-center justify-between">
+        <div className="mt-6 flex items-center justify-between gap-2">
           <h1 className="text-3xl font-bold text-text">{project.name}</h1>
           <span
             className={`text-sm font-semibold ${
@@ -64,6 +64,12 @@ export default function PortfolioDetailPage({
             {project.status}
           </span>
         </div>
+
+        {!project.isReal && (
+          <span className="mt-2 inline-block w-fit rounded-full border border-text-secondary/40 px-2 py-0.5 text-[10px] uppercase tracking-wide text-text-secondary">
+            Conceito ilustrativo
+          </span>
+        )}
 
         <p className="mt-4 text-text-secondary">{project.description}</p>
 

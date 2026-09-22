@@ -3,6 +3,13 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { portfolioProjects } from "@/lib/mock-portfolio";
+import {
+  getCategoryLabel,
+  getConceptBadgeLabel,
+  getDescription,
+  getStatusLabel,
+} from "@/lib/portfolio-i18n";
+import { useLocale } from "@/hooks/useLocale";
 import TiltCard from "@/components/TiltCard";
 
 const featured = portfolioProjects.slice(0, 6);
@@ -14,14 +21,18 @@ function statusColorClass(status: string) {
 }
 
 export default function FeaturedPortfolio() {
+  const { locale } = useLocale();
+
   return (
     <section className="bg-primary px-6 py-20 sm:px-10">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-bold text-text sm:text-4xl">
-          Projetos em Destaque
+          {locale === "en-US" ? "Featured Projects" : "Projetos em Destaque"}
         </h2>
         <p className="mt-4 text-base text-text-secondary">
-          Projetos que já desenvolvemos e conceitos que mostram o que fazemos
+          {locale === "en-US"
+            ? "Projects we've already delivered, plus concepts that show what we do"
+            : "Projetos que já desenvolvemos e conceitos que mostram o que fazemos"}
         </p>
       </div>
 
@@ -48,20 +59,25 @@ export default function FeaturedPortfolio() {
                   />
                 ) : (
                   <div className="flex aspect-video items-center justify-center rounded-md bg-gradient-to-br from-primary to-secondary text-text-secondary">
-                    {project.category}
+                    {getCategoryLabel(project.category, locale)}
                   </div>
                 )}
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-4 flex items-center justify-between gap-2">
                   <p className="font-bold text-text">{project.name}</p>
                   <span className={`text-xs font-semibold ${statusColorClass(project.status)}`}>
-                    {project.status}
+                    {getStatusLabel(project.status, locale)}
                   </span>
                 </div>
+                {!project.isReal && (
+                  <span className="mt-2 inline-block w-fit rounded-full border border-text-secondary/40 px-2 py-0.5 text-[10px] uppercase tracking-wide text-text-secondary">
+                    {getConceptBadgeLabel(locale)}
+                  </span>
+                )}
                 <p className="mt-2 flex-1 text-sm text-text-secondary">
-                  {project.description}
+                  {getDescription(project, locale)}
                 </p>
                 <span className="mt-4 text-sm font-semibold text-gold">
-                  Ver Detalhes →
+                  {locale === "en-US" ? "View Details →" : "Ver Detalhes →"}
                 </span>
               </Link>
             </TiltCard>
@@ -74,7 +90,7 @@ export default function FeaturedPortfolio() {
           href="/portfolio"
           className="inline-block rounded-md border-2 border-gold px-6 py-3 text-sm font-bold text-gold transition-colors duration-fast hover:bg-gold/10"
         >
-          Ver Portfolio Completo
+          {locale === "en-US" ? "See Full Portfolio" : "Ver Portfolio Completo"}
         </Link>
       </div>
     </section>
