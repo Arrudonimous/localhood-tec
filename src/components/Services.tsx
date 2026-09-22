@@ -2,50 +2,12 @@
 
 import { motion } from "framer-motion";
 import { useLocale } from "@/hooks/useLocale";
+import { translations } from "@/config/translations";
 import TiltCard from "@/components/TiltCard";
 
-const categories = [
-  {
-    slug: "servicos",
-    name: "Serviços",
-    items: [
-      "Websites",
-      "Landing pages",
-      "E-commerce",
-      "Sistemas internos",
-      "Automação",
-      "Integrações",
-      "Manutenção/hosting",
-    ],
-  },
-  {
-    slug: "produtos",
-    name: "Produtos",
-    items: [
-      "SaaS para pequenas empresas",
-      "Sistema de gestão",
-      "CRM",
-      "Agendamento",
-      "Automação de atendimento",
-      "Ferramentas de IA",
-    ],
-  },
-  {
-    slug: "escala",
-    name: "Escala",
-    items: [
-      "Assinaturas mensais",
-      "Produtos próprios",
-      "Marketplace",
-      "APIs abertas",
-      "Licenciamento",
-      "Clientes internacionais",
-    ],
-  },
-];
-
 export default function Services() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const { categories } = translations[locale].services;
 
   return (
     <section id="services" className="bg-primary px-6 py-20 sm:px-10">

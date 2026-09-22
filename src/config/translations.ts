@@ -31,6 +31,45 @@ export const translations = {
       customDescription:
         "Não encontrou a opção ideal? Fale com nosso time e vamos desenhar uma solução sob medida para o seu negócio.",
       customCta: "Consulte Nosso Time",
+      categories: [
+        {
+          slug: "servicos",
+          name: "Serviços",
+          items: [
+            "Websites",
+            "Landing pages",
+            "E-commerce",
+            "Sistemas internos",
+            "Automação",
+            "Integrações",
+            "Manutenção/hosting",
+          ],
+        },
+        {
+          slug: "produtos",
+          name: "Produtos",
+          items: [
+            "SaaS para pequenas empresas",
+            "Sistema de gestão",
+            "CRM",
+            "Agendamento",
+            "Automação de atendimento",
+            "Ferramentas de IA",
+          ],
+        },
+        {
+          slug: "escala",
+          name: "Escala",
+          items: [
+            "Assinaturas mensais",
+            "Produtos próprios",
+            "Marketplace",
+            "APIs abertas",
+            "Licenciamento",
+            "Clientes internacionais",
+          ],
+        },
+      ],
     },
     footer: {
       description:
@@ -219,6 +258,45 @@ export const translations = {
       customDescription:
         "Didn't find the right fit? Talk to our team and we'll design a tailored solution for your business.",
       customCta: "Talk to Our Team",
+      categories: [
+        {
+          slug: "servicos",
+          name: "Services",
+          items: [
+            "Websites",
+            "Landing pages",
+            "E-commerce",
+            "Internal systems",
+            "Automation",
+            "Integrations",
+            "Maintenance/hosting",
+          ],
+        },
+        {
+          slug: "produtos",
+          name: "Products",
+          items: [
+            "SaaS for small businesses",
+            "Management systems",
+            "CRM",
+            "Scheduling",
+            "Support automation",
+            "AI tools",
+          ],
+        },
+        {
+          slug: "escala",
+          name: "Scale",
+          items: [
+            "Monthly subscriptions",
+            "In-house products",
+            "Marketplace",
+            "Open APIs",
+            "Licensing",
+            "International clients",
+          ],
+        },
+      ],
     },
     footer: {
       description:
