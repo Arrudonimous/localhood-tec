@@ -6,6 +6,7 @@ import LeadMagnetPopup from "@/components/LeadMagnetPopup";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 import CursorGlow from "@/components/CursorGlow";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { LocaleProvider } from "@/context/LocaleContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { siteConfig } from "@/config/site-config";
@@ -59,6 +60,7 @@ export default function RootLayout({
             {children}
             <Footer />
             <LeadMagnetPopup />
+            <WhatsAppButton />
           </AuthProvider>
         </LocaleProvider>
         <GoogleAnalytics />

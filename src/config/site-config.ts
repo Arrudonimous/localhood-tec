@@ -5,14 +5,14 @@ export const siteConfig = {
   url: "https://localhoodtec.com.br",
   contactEmail: "contato@localhoodtec.com.br",
   phone: "+55 (11) 4000-0000",
-  whatsappUrl: "https://wa.me/5511400000000",
+  whatsappUrl: "https://wa.me/5511950260410",
   businessHours: "Seg-Sex 9h-18h (Horário de Brasília)",
   socialLinks: [
     { label: "LinkedIn", href: "https://linkedin.com" },
     { label: "Instagram", href: "https://instagram.com" },
     { label: "GitHub", href: "https://github.com" },
     { label: "Twitter/X", href: "https://x.com" },
-    { label: "WhatsApp", href: "https://wa.me/5511400000000" },
+    { label: "WhatsApp", href: "https://wa.me/5511950260410" },
   ],
   footerColumns: {
     services: [
