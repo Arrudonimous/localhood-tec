@@ -22,12 +22,19 @@ export default function AboutPage() {
           </p>
         </section>
 
+        {/* TODO: adicionar nomes reais e foto do time antes de considerar esta seção final */}
         <section id="team">
           <h2 className="text-xl font-bold text-text">Nosso Time</h2>
           <p className="mt-3 text-text-secondary">
-            Um time enxuto e multidisciplinar de design, desenvolvimento e
-            estratégia digital, com processos claros e comunicação direta
-            com cada cliente durante todo o projeto.
+            A LocalHood nasceu do encontro de duas trajetórias: uma do lado
+            da estratégia, outra do lado da tecnologia. Quem cuida da
+            estratégia pensa em como cada negócio local pode vender mais e
+            se posicionar melhor. Quem cuida da tecnologia constrói o site,
+            o sistema ou a automação que faz isso acontecer na prática.
+          </p>
+          <p className="mt-3 text-text-secondary">
+            É um time pequeno, então cada projeto passa pelas duas cabeças,
+            do primeiro contato até a entrega.
           </p>
         </section>
 
