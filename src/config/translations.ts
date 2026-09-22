@@ -12,14 +12,11 @@ export const translations = {
       accessDashboard: "Acessar Painel",
     },
     hero: {
-      headline: "Websites e Automações que Geram Resultados",
+      headline: "Sites e sistemas sob medida pra pequenos negócios locais venderem mais",
       subheadline:
-        "De startups a grandes empresas, transformamos ideias em soluções digitais profissionais.",
+        "Da landing page ao sistema completo: cuidamos da tecnologia pra você focar no seu negócio.",
       ctaPrimary: "Solicitar Proposta",
       ctaSecondary: "Ver Nossos Projetos",
-      statsProjects: "Projetos Realizados",
-      statsSatisfaction: "Satisfação de Clientes",
-      statsExpertise: "Anos de Expertise",
     },
     howItWorks: {
       headline: "Como Funciona Nosso Processo",
@@ -186,14 +183,11 @@ export const translations = {
       accessDashboard: "Access Dashboard",
     },
     hero: {
-      headline: "Websites and Automations That Drive Results",
+      headline: "Custom websites and systems that help local businesses sell more",
       subheadline:
-        "From startups to large companies, we turn ideas into professional digital solutions.",
+        "From a simple landing page to a full system: we handle the tech so you can focus on your business.",
       ctaPrimary: "Request a Proposal",
       ctaSecondary: "See Our Projects",
-      statsProjects: "Projects Delivered",
-      statsSatisfaction: "Client Satisfaction",
-      statsExpertise: "Years of Expertise",
     },
     howItWorks: {
       headline: "How Our Process Works",

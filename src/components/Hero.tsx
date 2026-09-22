@@ -7,12 +7,6 @@ import TiltCard from "@/components/TiltCard";
 export default function Hero() {
   const { t } = useLocale();
 
-  const stats = [
-    { icon: "✓", value: "200+", label: t("hero.statsProjects") },
-    { icon: "★", value: "95%", label: t("hero.statsSatisfaction") },
-    { icon: "⏱", value: "15+", label: t("hero.statsExpertise") },
-  ];
-
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary to-secondary px-6 py-20 sm:px-10 lg:py-[120px]">
       <svg
@@ -37,7 +31,7 @@ export default function Hero() {
         <rect width="100%" height="100%" fill="url(#hero-grid)" />
       </svg>
 
-      <div className="relative mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:[grid-template-areas:'headline_illustration'_'stats_illustration'_'cta_illustration']">
+      <div className="relative mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:[grid-template-areas:'headline_illustration'_'cta_illustration']">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,36 +73,6 @@ export default function Hero() {
             </svg>
           </TiltCard>
         </motion.div>
-
-        <div className="flex flex-wrap gap-8 sm:gap-12 lg:[grid-area:stats]">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
-              className="flex items-center gap-3"
-            >
-              <span className="text-xl text-gold">{stat.icon}</span>
-              <div>
-                <motion.p
-                  className="text-2xl font-bold text-text"
-                  animate={
-                    index === 0 ? { scale: [1, 1.05, 1] } : undefined
-                  }
-                  transition={
-                    index === 0
-                      ? { duration: 2, repeat: Infinity, ease: "easeInOut" }
-                      : undefined
-                  }
-                >
-                  {stat.value}
-                </motion.p>
-                <p className="text-xs text-text-secondary">{stat.label}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
