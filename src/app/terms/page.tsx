@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: `Termos e condições de uso do site e dos serviços da ${siteConfig.name}.`,
 };
 
-// Conteúdo genérico de referência — revisar com um advogado antes de publicar
-// para o público, especialmente as cláusulas de escopo/pagamento/garantia.
 export default function TermsPage() {
   return (
     <main className="bg-primary px-6 py-16 sm:px-10">
@@ -100,6 +98,12 @@ export default function TermsPage() {
             .
           </p>
         </section>
+
+        <p className="border-t border-secondary pt-6 text-xs text-text-secondary">
+          Este texto foi escrito pela nossa equipe com base em como a{" "}
+          {siteConfig.name} opera hoje. Ainda vamos revisar com um advogado
+          antes de tratá-lo como documento jurídico definitivo.
+        </p>
       </article>
     </main>
   );

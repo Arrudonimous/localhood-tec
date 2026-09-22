@@ -6,8 +6,6 @@ export const metadata: Metadata = {
   description: `Como a ${siteConfig.name} coleta, usa e protege seus dados pessoais.`,
 };
 
-// Conteúdo genérico de referência — revisar com um advogado antes de publicar
-// para o público (LGPD/GDPR variam por jurisdição e tipo de dado coletado).
 export default function PrivacyPage() {
   return (
     <main className="bg-primary px-6 py-16 sm:px-10">
@@ -102,6 +100,12 @@ export default function PrivacyPage() {
             .
           </p>
         </section>
+
+        <p className="border-t border-secondary pt-6 text-xs text-text-secondary">
+          Este texto foi escrito pela nossa equipe com base em como a{" "}
+          {siteConfig.name} opera hoje. Ainda vamos revisar com um advogado
+          antes de tratá-lo como documento jurídico definitivo.
+        </p>
       </article>
     </main>
   );
