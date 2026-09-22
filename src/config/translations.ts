@@ -68,12 +68,17 @@ export const translations = {
         other: "Outro",
       },
       budgets: {
+        b0: "Menos de $1,000",
         b1: "$1,000 - $5,000",
         b2: "$5,000 - $10,000",
         b3: "$10,000 - $25,000",
         b4: "$25,000 - $50,000",
         b5: "Acima de $50,000",
       },
+      successHeadline: "Recebemos seu pedido!",
+      successNextSteps:
+        "Vamos te chamar no WhatsApp em até 24 horas úteis pra entender melhor o seu projeto.",
+      successWhatsappCta: "Prefere falar agora? Chama no WhatsApp.",
       popupHeadline: "Ganhe um Checklist Gratuito",
       popupBody:
         "50 pontos essenciais para o seu website converter mais. Deixe seu email e enviamos agora.",
@@ -86,6 +91,17 @@ export const translations = {
       popular: "Popular",
       ctaCustom: "Falar com Especialista",
       plans: {
+        landing: {
+          name: "Landing Page Rápida",
+          bestFor: "Quem precisa entrar no ar rápido, sem site completo por enquanto",
+          features: [
+            "1 página",
+            "Design responsivo",
+            "Entrega em até 7 dias",
+            "Domínio e hospedagem por conta do cliente",
+          ],
+          cta: "Quero Começar",
+        },
         startup: {
           name: "Startup",
           bestFor: "Pequenas empresas e freelancers",
@@ -240,12 +256,17 @@ export const translations = {
         other: "Other",
       },
       budgets: {
+        b0: "Under $1,000",
         b1: "$1,000 - $5,000",
         b2: "$5,000 - $10,000",
         b3: "$10,000 - $25,000",
         b4: "$25,000 - $50,000",
         b5: "Above $50,000",
       },
+      successHeadline: "We got your request!",
+      successNextSteps:
+        "We'll reach out on WhatsApp within 24 business hours to learn more about your project.",
+      successWhatsappCta: "Want to talk now? Message us on WhatsApp.",
       popupHeadline: "Get a Free Checklist",
       popupBody:
         "50 essential points to make your website convert more. Leave your email and we'll send it now.",
@@ -258,6 +279,17 @@ export const translations = {
       popular: "Popular",
       ctaCustom: "Talk to a Specialist",
       plans: {
+        landing: {
+          name: "Quick Landing Page",
+          bestFor: "Anyone who needs to get online fast, without a full site yet",
+          features: [
+            "1 page",
+            "Responsive design",
+            "Delivered in up to 7 days",
+            "Domain and hosting on your own",
+          ],
+          cta: "Let's Start",
+        },
         startup: {
           name: "Startup",
           bestFor: "Small businesses and freelancers",

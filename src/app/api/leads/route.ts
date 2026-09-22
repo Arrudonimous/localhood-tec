@@ -11,7 +11,7 @@ const leadSchema = z
     serviceType: z
       .enum(["website", "ecommerce", "system", "automation", "consulting", "other"])
       .optional(),
-    budget: z.enum(["b1", "b2", "b3", "b4", "b5"]).optional(),
+    budget: z.enum(["b0", "b1", "b2", "b3", "b4", "b5"]).optional(),
     description: z.string().trim().max(500).optional(),
     source: z.enum(["contact-form", "popup", "other"]).default("contact-form"),
     locale: z.enum(["pt-BR", "en-US"]).default("pt-BR"),

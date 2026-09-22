@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLocale } from "@/hooks/useLocale";
+import { siteConfig } from "@/config/site-config";
 
 const formSchema = z.object({
   name: z.string().trim().min(3),
@@ -19,7 +20,7 @@ const formSchema = z.object({
     "consulting",
     "other",
   ]),
-  budget: z.enum(["b1", "b2", "b3", "b4", "b5"]),
+  budget: z.enum(["b0", "b1", "b2", "b3", "b4", "b5"]),
   description: z.string().trim().min(10).max(500),
   acceptedPrivacy: z.literal(true),
   website: z.string().max(0).optional(), // honeypot anti-spam
@@ -69,6 +70,7 @@ export default function ContactForm() {
   ];
 
   const budgets = [
+    { value: "b0", label: t("contact.budgets.b0") },
     { value: "b1", label: t("contact.budgets.b1") },
     { value: "b2", label: t("contact.budgets.b2") },
     { value: "b3", label: t("contact.budgets.b3") },
@@ -87,6 +89,28 @@ export default function ContactForm() {
           onSubmit={handleSubmit(onSubmit)}
           className="glass mt-10 rounded-lg border-gold/40 p-8"
         >
+          {status === "success" ? (
+            <div className="space-y-4 text-center">
+              <p className="text-lg font-bold text-green">
+                {t("contact.successHeadline")}
+              </p>
+              <p className="text-sm text-text-secondary">
+                {t("contact.successNextSteps")}
+              </p>
+              <a
+                href={`${siteConfig.whatsappUrl}?text=${encodeURIComponent(
+                  locale === "en-US"
+                    ? "Hi! I just sent a request through the website."
+                    : "Olá! Acabei de enviar um pedido pelo site.",
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-sm font-semibold text-gold hover:underline"
+              >
+                {t("contact.successWhatsappCta")}
+              </a>
+            </div>
+          ) : (
           <div className="space-y-5">
             <div>
               <label className="text-sm text-text">{t("contact.name")} *</label>
@@ -229,17 +253,13 @@ export default function ContactForm() {
               {isSubmitting ? t("contact.submitting") : t("contact.submit")}
             </button>
 
-            {status === "success" && (
-              <p className="text-center text-sm text-green">
-                {t("contact.success")}
-              </p>
-            )}
             {status === "error" && (
               <p className="text-center text-sm text-error">
                 {t("contact.error")}
               </p>
             )}
           </div>
+          )}
         </form>
       </div>
     </section>
