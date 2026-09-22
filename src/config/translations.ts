@@ -10,6 +10,7 @@ export const translations = {
       blog: "Blog",
       contact: "Contato",
       accessDashboard: "Acessar Painel",
+      logout: "Sair",
     },
     hero: {
       headline: "Sites e sistemas sob medida pra pequenos negócios locais venderem mais",
@@ -181,6 +182,7 @@ export const translations = {
       blog: "Blog",
       contact: "Contact",
       accessDashboard: "Access Dashboard",
+      logout: "Log Out",
     },
     hero: {
       headline: "Custom websites and systems that help local businesses sell more",

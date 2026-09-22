@@ -28,6 +28,7 @@ export const siteConfig = {
       { label: "Blog", href: "/blog" },
       { label: "Vagas", href: "/about#careers" },
       { label: "Imprensa", href: "/about#press" },
+      { label: "Área do Cliente", href: "/login" },
     ],
     legal: [
       { label: "Política de Privacidade", href: "/privacy" },

@@ -131,7 +131,7 @@ export default function Navigation() {
             )}
           </div>
 
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <div className="flex items-center gap-3">
               <Link
                 href="/dashboard"
@@ -144,16 +144,9 @@ export default function Navigation() {
                 onClick={() => logout()}
                 className="text-sm text-text-secondary transition-colors duration-fast hover:text-gold"
               >
-                Sair
+                {t("nav.logout")}
               </button>
             </div>
-          ) : (
-            <Link
-              href="/login"
-              className="rounded-md bg-green px-4 py-2 text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
-            >
-              {t("nav.accessDashboard")}
-            </Link>
           )}
         </div>
 
@@ -215,13 +208,27 @@ export default function Navigation() {
                 <span>{currency}</span>
               </div>
 
-              <Link
-                href="/login"
-                onClick={() => setMobileOpen(false)}
-                className="rounded-md bg-green px-4 py-2 text-center text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
-              >
-                {t("nav.accessDashboard")}
-              </Link>
+              {isAuthenticated && (
+                <>
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-md bg-green px-4 py-2 text-center text-sm font-semibold text-primary transition-colors duration-fast hover:bg-green-hover"
+                  >
+                    {t("nav.accessDashboard")}
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      logout();
+                      setMobileOpen(false);
+                    }}
+                    className="text-left text-sm text-text-secondary transition-colors duration-fast hover:text-gold"
+                  >
+                    {t("nav.logout")}
+                  </button>
+                </>
+              )}
             </motion.div>
           </>
         )}
